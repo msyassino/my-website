@@ -1,289 +1,1087 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المصاريف برو | النسخة الملكية</title>
-    <!-- استيراد خط تجوال العربي لمظهر عصري -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>مصاريفي برو | النسخة الملكية 🇲🇦</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* =========================================
-           1. CORE DESIGN SYSTEM & ANIMATIONS
-           ========================================= */
+        /* ============================================================
+           1. DESIGN SYSTEM - DARK & LIGHT THEMES
+           ============================================================ */
         :root {
-            --primary: #6366f1;
-            --primary-glow: rgba(99, 102, 241, 0.5);
-            --accent: #ec4899;
-            --accent-glow: rgba(236, 72, 153, 0.5);
-            --success: #10b981;
-            --danger: #ef4444;
-            
-            --bg-dark: #0f172a;
-            --glass-bg: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            
-            --radius-xl: 24px;
-            --radius-md: 16px;
-            --shadow-neon: 0 0 20px -5px var(--primary-glow);
             --font-main: 'Tajawal', sans-serif;
+            --radius-xl: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-med: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
+        /* ---- DARK THEME (Default) ---- */
+        [data-theme="dark"] {
+            --primary: #818cf8;
+            --primary-deep: #6366f1;
+            --primary-glow: rgba(129, 140, 248, 0.35);
+            --accent: #f472b6;
+            --accent-glow: rgba(244, 114, 182, 0.3);
+            --success: #34d399;
+            --success-glow: rgba(52, 211, 153, 0.3);
+            --danger: #f87171;
+            --danger-glow: rgba(248, 113, 113, 0.3);
+            --warning: #fbbf24;
+
+            --bg-body: #0b1120;
+            --bg-gradient-1: rgba(99, 102, 241, 0.12);
+            --bg-gradient-2: rgba(244, 114, 182, 0.1);
+            --bg-gradient-3: rgba(52, 211, 153, 0.06);
+
+            --glass-bg: rgba(22, 30, 50, 0.75);
+            --glass-bg-hover: rgba(30, 40, 65, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-border-hover: rgba(255, 255, 255, 0.16);
+            --input-bg: rgba(10, 15, 30, 0.6);
+            --input-bg-focus: rgba(10, 15, 30, 0.9);
+
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-faint: #64748b;
+
+            --shadow-card: 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+            --shadow-card-hover: 0 12px 40px -8px rgba(0, 0, 0, 0.5);
+            --shadow-btn: 0 4px 14px -3px var(--primary-glow);
+            --shadow-btn-hover: 0 8px 25px -5px var(--primary-glow);
+
+            --table-row-bg: rgba(255, 255, 255, 0.02);
+            --table-row-hover: rgba(255, 255, 255, 0.06);
+            --scrollbar-track: rgba(255, 255, 255, 0.03);
+            --scrollbar-thumb: rgba(255, 255, 255, 0.12);
+            --modal-bg: #16203a;
+            --toast-bg: rgba(15, 23, 42, 0.95);
+            --calc-btn-bg: rgba(255, 255, 255, 0.06);
+            --calc-btn-hover: rgba(255, 255, 255, 0.12);
+            --calc-operator-bg: rgba(129, 140, 248, 0.15);
+            --chart-grid: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ---- LIGHT THEME ---- */
+        [data-theme="light"] {
+            --primary: #6366f1;
+            --primary-deep: #4f46e5;
+            --primary-glow: rgba(99, 102, 241, 0.25);
+            --accent: #ec4899;
+            --accent-glow: rgba(236, 72, 153, 0.2);
+            --success: #059669;
+            --success-glow: rgba(5, 150, 105, 0.2);
+            --danger: #dc2626;
+            --danger-glow: rgba(220, 38, 38, 0.2);
+            --warning: #d97706;
+
+            --bg-body: #f0f4ff;
+            --bg-gradient-1: rgba(99, 102, 241, 0.08);
+            --bg-gradient-2: rgba(236, 72, 153, 0.06);
+            --bg-gradient-3: rgba(5, 150, 105, 0.05);
+
+            --glass-bg: rgba(255, 255, 255, 0.82);
+            --glass-bg-hover: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(0, 0, 0, 0.07);
+            --glass-border-hover: rgba(99, 102, 241, 0.25);
+            --input-bg: rgba(241, 245, 249, 0.8);
+            --input-bg-focus: rgba(255, 255, 255, 1);
+
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-faint: #94a3b8;
+
+            --shadow-card: 0 2px 16px -2px rgba(99, 102, 241, 0.1);
+            --shadow-card-hover: 0 8px 30px -6px rgba(99, 102, 241, 0.18);
+            --shadow-btn: 0 4px 14px -3px var(--primary-glow);
+            --shadow-btn-hover: 0 8px 25px -5px var(--primary-glow);
+
+            --table-row-bg: rgba(99, 102, 241, 0.03);
+            --table-row-hover: rgba(99, 102, 241, 0.07);
+            --scrollbar-track: rgba(0, 0, 0, 0.03);
+            --scrollbar-thumb: rgba(0, 0, 0, 0.12);
+            --modal-bg: #ffffff;
+            --toast-bg: rgba(255, 255, 255, 0.97);
+            --calc-btn-bg: rgba(0, 0, 0, 0.04);
+            --calc-btn-hover: rgba(0, 0, 0, 0.08);
+            --calc-operator-bg: rgba(99, 102, 241, 0.1);
+            --chart-grid: rgba(0, 0, 0, 0.05);
+        }
+
+        /* ============================================================
+           2. BASE & RESET
+           ============================================================ */
         * { box-sizing: border-box; margin: 0; padding: 0; outline: none; -webkit-tap-highlight-color: transparent; }
-        
+
+        html { font-size: 15px; }
+
         body {
             font-family: var(--font-main);
-            background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
+            background-color: var(--bg-body);
+            background-image:
+                radial-gradient(ellipse at 15% 15%, var(--bg-gradient-1) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 85%, var(--bg-gradient-2) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, var(--bg-gradient-3) 0%, transparent 60%);
+            background-attachment: fixed;
             color: var(--text-main);
             height: 100vh;
             overflow: hidden;
             display: flex;
-            backdrop-filter: blur(50px);
+            transition: background-color var(--transition-med), color var(--transition-med);
         }
 
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 10px; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
-        /* Animations */
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        /* ============================================================
+           3. ANIMATIONS
+           ============================================================ */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes glowPulse { 0% { box-shadow: 0 0 5px var(--primary-glow); } 50% { box-shadow: 0 0 20px var(--primary-glow); } 100% { box-shadow: 0 0 5px var(--primary-glow); } }
+        @keyframes slideInToast { from { transform: translateX(-100%) scale(0.8); opacity: 0; } to { transform: translateX(0) scale(1); opacity: 1; } }
+        @keyframes modalPop { from { transform: scale(0.85) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        @keyframes barGrow { from { height: 0; } }
+        @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes ripple { to { transform: scale(4); opacity: 0; } }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 5px var(--primary-glow); }
+            50% { box-shadow: 0 0 20px var(--primary-glow), 0 0 40px var(--primary-glow); }
+        }
 
-        /* =========================================
-           2. LAYOUT & GLASSMORPHISM
-           ========================================= */
+        .animate-in { animation: fadeIn 0.4s ease forwards; }
+
+        /* ============================================================
+           4. SIDEBAR
+           ============================================================ */
         .sidebar {
-            width: 280px;
+            width: 240px;
+            min-width: 240px;
             background: var(--glass-bg);
             border-left: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             display: flex;
             flex-direction: column;
-            padding: 2rem;
+            padding: 1.2rem;
             z-index: 100;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all var(--transition-med);
+            overflow-y: auto;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 3rem;
-            letter-spacing: -1px;
+            background-clip: text;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            padding: 0.5rem 0;
+            white-space: nowrap;
         }
-        .logo span { font-size: 2rem; filter: drop-shadow(0 0 10px var(--primary-glow)); }
+        .logo span { font-size: 1.5rem; -webkit-text-fill-color: initial; }
 
-        .nav-links { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 0.8rem; }
+        .nav-links { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 4px; }
         .nav-item {
-            padding: 1rem 1.2rem;
-            border-radius: var(--radius-md);
+            padding: 0.65rem 0.9rem;
+            border-radius: var(--radius-sm);
             cursor: pointer;
             color: var(--text-muted);
             font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 0.88rem;
+            transition: all var(--transition-fast);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             position: relative;
             overflow: hidden;
+            user-select: none;
         }
-        .nav-item::before {
-            content: ''; position: absolute; top: 0; right: 0; width: 0%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05));
-            transition: 0.4s;
+        .nav-item:hover {
+            color: var(--text-main);
+            background: var(--table-row-hover);
+            transform: translateX(-3px);
         }
-        .nav-item:hover::before { width: 100%; }
-        .nav-item:hover { color: white; transform: translateX(-5px); }
-        
         .nav-item.active {
-            background: rgba(99, 102, 241, 0.15);
+            background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 100%);
             color: white;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            box-shadow: 0 0 15px -3px var(--primary-glow);
+            box-shadow: var(--shadow-btn);
         }
-        .nav-icon { font-size: 1.4rem; width: 30px; text-align: center; }
+        .nav-icon { font-size: 1.1rem; width: 24px; text-align: center; flex-shrink: 0; }
 
+        .sidebar-footer { margin-top: auto; padding-top: 1rem; }
+
+        .theme-toggle-btn {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--glass-border);
+            background: var(--calc-btn-bg);
+            color: var(--text-main);
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .theme-toggle-btn:hover { background: var(--calc-btn-hover); border-color: var(--glass-border-hover); }
+
+        /* ============================================================
+           5. MAIN CONTENT
+           ============================================================ */
         .main-content {
             flex: 1;
             overflow-y: auto;
-            padding: 2.5rem;
-            position: relative;
+            overflow-x: hidden;
+            padding: 1.5rem;
+            scroll-behavior: smooth;
         }
 
-        .mobile-toggle { display: none; position: fixed; top: 1.5rem; right: 1.5rem; z-index: 200; background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); color: white; width: 45px; height: 45px; border-radius: 12px; cursor: pointer; font-size: 1.2rem; }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .page-title {
+            font-weight: 800;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        /* =========================================
-           3. COMPONENTS (Cards, Buttons, Inputs)
-           ========================================= */
+        /* ============================================================
+           6. COMPONENTS
+           ============================================================ */
         .card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-xl);
-            padding: 2rem;
+            padding: 1.5rem;
             backdrop-filter: blur(12px);
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: slideUp 0.5s ease forwards;
+            -webkit-backdrop-filter: blur(12px);
+            margin-bottom: 1.2rem;
+            transition: all var(--transition-med);
+            animation: fadeIn 0.4s ease;
+            box-shadow: var(--shadow-card);
         }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.15); }
+        .card:hover {
+            border-color: var(--glass-border-hover);
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-2px);
+        }
 
         .btn {
-            padding: 0.8rem 1.6rem;
-            border-radius: 12px;
+            padding: 0.65rem 1.3rem;
+            border-radius: var(--radius-sm);
             border: none;
             cursor: pointer;
             font-weight: 700;
             font-family: inherit;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.88rem;
+            transition: all var(--transition-fast);
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.95rem;
+            gap: 8px;
             position: relative;
             overflow: hidden;
+            user-select: none;
         }
-        .btn-primary { 
-            background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%); 
-            color: white; 
-            box-shadow: 0 4px 15px -3px var(--primary-glow);
+        .btn:active { transform: scale(0.97); }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 100%);
+            color: white;
+            box-shadow: var(--shadow-btn);
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px -5px var(--primary-glow); filter: brightness(1.1); }
-        .btn-danger { background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%); color: white; box-shadow: 0 4px 15px -3px rgba(239, 68, 68, 0.4); }
-        .btn-outline { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: var(--text-main); }
-        .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: white; }
+        .btn-primary:hover { box-shadow: var(--shadow-btn-hover); transform: translateY(-2px); filter: brightness(1.08); }
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%);
+            color: white;
+            box-shadow: 0 4px 14px -3px var(--danger-glow);
+        }
+        .btn-danger:hover { transform: translateY(-2px); filter: brightness(1.08); }
+        .btn-success {
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 4px 14px -3px var(--success-glow);
+        }
+        .btn-outline {
+            background: var(--calc-btn-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+        }
+        .btn-outline:hover { background: var(--calc-btn-hover); border-color: var(--glass-border-hover); }
 
-        .form-group { margin-bottom: 1.5rem; position: relative; }
-        .form-label { display: block; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+        .form-group { margin-bottom: 1rem; }
+        .form-label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
         .form-control {
             width: 100%;
-            padding: 1rem;
-            border-radius: 12px;
+            padding: 0.7rem 0.9rem;
+            border-radius: var(--radius-sm);
             border: 1px solid var(--glass-border);
-            background: rgba(15, 23, 42, 0.6);
-            color: white;
-            font-size: 1rem;
+            background: var(--input-bg);
+            color: var(--text-main);
+            font-size: 0.95rem;
             font-family: inherit;
-            transition: all 0.3s ease;
+            transition: all var(--transition-fast);
         }
-        .form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15); background: rgba(15, 23, 42, 0.9); }
-
-        /* =========================================
-           4. VIEWS & SPECIFIC STYLES
-           ========================================= */
-        .view-section { display: none; }
-        .view-section.active { display: block; animation: fadeIn 0.4s ease; }
-
-        /* Dashboard Stats */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
-        .stat-card { 
-            position: relative; overflow: hidden; 
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%);
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+            background: var(--input-bg-focus);
         }
-        .stat-card::after {
-            content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            transform: rotate(30deg); pointer-events: none;
+        .form-control::placeholder { color: var(--text-faint); }
+        select.form-control { cursor: pointer; }
+        select.form-control option { background: var(--modal-bg); color: var(--text-main); }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+        /* ============================================================
+           7. DASHBOARD STATS
+           ============================================================ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.2rem;
         }
-        .stat-value { font-size: 2.5rem; font-weight: 900; margin: 0.5rem 0; color: white; direction: ltr; text-align: right; text-shadow: 0 0 20px rgba(255,255,255,0.1); }
-        .stat-label { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; letter-spacing: 0.5px; }
-        .stat-icon { 
-            position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); 
-            font-size: 3.5rem; opacity: 0.15; filter: grayscale(100%); transition: 0.5s;
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+            padding: 1.3rem;
         }
-        .stat-card:hover .stat-icon { opacity: 0.3; filter: grayscale(0%); transform: translateY(-50%) scale(1.1) rotate(10deg); }
-
-        /* Charts */
-        .chart-container { height: 300px; display: flex; align-items: flex-end; justify-content: space-around; padding-top: 2rem; gap: 15px; }
-        .bar-group { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 50px; }
-        .bar { 
-            width: 100%; 
-            background: linear-gradient(to top, var(--primary), var(--accent)); 
-            border-radius: 8px 8px 0 0; 
-            transition: height 1.5s cubic-bezier(0.34, 1.56, 0.64, 1); 
-            position: relative; min-height: 4px; 
-            box-shadow: 0 0 15px -3px var(--primary-glow);
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 80px; height: 80px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+            pointer-events: none;
         }
-        .bar:hover { filter: brightness(1.2); }
-        .bar-label { margin-top: 12px; font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
-        .bar-value { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); font-size: 0.8rem; font-weight: 800; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-
-        /* Table */
-        .table-responsive { overflow-x: auto; border-radius: 16px; }
-        table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
-        th { padding: 1rem; text-align: right; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-        td { padding: 1.2rem 1rem; background: rgba(255,255,255,0.02); color: var(--text-main); transition: 0.3s; }
-        tr td:first-child { border-radius: 0 12px 12px 0; }
-        tr td:last-child { border-radius: 12px 0 0 12px; }
-        tbody tr:hover td { background: rgba(255,255,255,0.05); transform: scale(1.01); }
-        
-        .badge { padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1); }
-        .badge-food { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border-color: rgba(239, 68, 68, 0.3); }
-        .badge-transport { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border-color: rgba(59, 130, 246, 0.3); }
-        .badge-bills { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border-color: rgba(245, 158, 11, 0.3); }
-        .badge-other { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border-color: rgba(148, 163, 184, 0.3); }
-
-        /* Converter */
-        .converter-box { max-width: 600px; margin: 3rem auto; text-align: center; position: relative; }
-        .converter-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: var(--primary); filter: blur(80px); opacity: 0.15; z-index: -1; border-radius: 50%; }
-        .result-display { font-size: 4rem; font-weight: 900; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 1.5rem 0; direction: ltr; line-height: 1; }
-
-        /* Toast */
-        #toast-container { position: fixed; bottom: 30px; left: 30px; z-index: 1000; display: flex; flex-direction: column; gap: 12px; }
-        .toast { 
-            background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); 
-            padding: 1rem 1.5rem; border-radius: 12px; 
-            border: 1px solid var(--glass-border); border-right: 4px solid var(--primary); 
-            display: flex; align-items: center; gap: 12px; 
-            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            min-width: 320px; color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+        .stat-icon {
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            transition: transform var(--transition-spring);
         }
-        @keyframes slideIn { from { transform: translateX(-100%) scale(0.8); opacity: 0; } to { transform: translateX(0) scale(1); opacity: 1; } }
+        .stat-card:hover .stat-icon { transform: scale(1.15) rotate(8deg); }
+        .stat-icon.purple { background: rgba(129, 140, 248, 0.15); }
+        .stat-icon.pink { background: rgba(244, 114, 182, 0.15); }
+        .stat-icon.green { background: rgba(52, 211, 153, 0.15); }
+        .stat-icon.orange { background: rgba(251, 191, 36, 0.15); }
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 900;
+            direction: ltr;
+            text-align: right;
+            line-height: 1.2;
+            margin-bottom: 0.2rem;
+        }
+        .stat-label { color: var(--text-muted); font-size: 0.82rem; font-weight: 500; }
 
-        /* Modal */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        /* ============================================================
+           8. TABLES
+           ============================================================ */
+        .table-responsive { overflow-x: auto; border-radius: var(--radius-md); }
+        table { width: 100%; border-collapse: separate; border-spacing: 0 6px; }
+        th {
+            padding: 0.7rem 0.8rem;
+            text-align: right;
+            color: var(--text-faint);
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        td {
+            padding: 0.8rem;
+            background: var(--table-row-bg);
+            color: var(--text-main);
+            transition: all var(--transition-fast);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        tbody tr:hover td { background: var(--table-row-hover); }
+        tr td:first-child { border-radius: 0 10px 10px 0; }
+        tr td:last-child { border-radius: 10px 0 0 10px; }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid transparent;
+        }
+        .badge-food { background: rgba(248, 113, 113, 0.12); color: #fca5a5; border-color: rgba(248, 113, 113, 0.2); }
+        .badge-transport { background: rgba(96, 165, 250, 0.12); color: #93c5fd; border-color: rgba(96, 165, 250, 0.2); }
+        .badge-bills { background: rgba(251, 191, 36, 0.12); color: #fcd34d; border-color: rgba(251, 191, 36, 0.2); }
+        .badge-shopping { background: rgba(192, 132, 252, 0.12); color: #d8b4fe; border-color: rgba(192, 132, 252, 0.2); }
+        .badge-health { background: rgba(52, 211, 153, 0.12); color: #6ee7b7; border-color: rgba(52, 211, 153, 0.2); }
+        .badge-education { background: rgba(45, 212, 191, 0.12); color: #5eead4; border-color: rgba(45, 212, 191, 0.2); }
+        .badge-housing { background: rgba(251, 146, 60, 0.12); color: #fdba74; border-color: rgba(251, 146, 60, 0.2); }
+        .badge-entertainment { background: rgba(244, 114, 182, 0.12); color: #f9a8d4; border-color: rgba(244, 114, 182, 0.2); }
+        .badge-clothing { background: rgba(129, 140, 248, 0.12); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.2); }
+        .badge-gifts { background: rgba(251, 113, 133, 0.12); color: #fda4af; border-color: rgba(251, 113, 133, 0.2); }
+        .badge-sadaqa { background: rgba(163, 230, 53, 0.12); color: #bef264; border-color: rgba(163, 230, 53, 0.2); }
+        .badge-other { background: rgba(148, 163, 184, 0.12); color: #cbd5e1; border-color: rgba(148, 163, 184, 0.2); }
+
+        [data-theme="light"] .badge-food { color: #dc2626; }
+        [data-theme="light"] .badge-transport { color: #2563eb; }
+        [data-theme="light"] .badge-bills { color: #d97706; }
+        [data-theme="light"] .badge-shopping { color: #9333ea; }
+        [data-theme="light"] .badge-health { color: #059669; }
+        [data-theme="light"] .badge-education { color: #0d9488; }
+        [data-theme="light"] .badge-housing { color: #ea580c; }
+        [data-theme="light"] .badge-entertainment { color: #db2777; }
+        [data-theme="light"] .badge-clothing { color: #4f46e5; }
+        [data-theme="light"] .badge-gifts { color: #e11d48; }
+        [data-theme="light"] .badge-sadaqa { color: #65a30d; }
+        [data-theme="light"] .badge-other { color: #475569; }
+
+        /* ============================================================
+           9. CHARTS
+           ============================================================ */
+        .chart-container {
+            height: 220px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding-top: 1.5rem;
+            gap: 8px;
+            position: relative;
+        }
+        .chart-container::before {
+            content: '';
+            position: absolute;
+            bottom: 30px;
+            left: 0; right: 0;
+            height: 1px;
+            background: var(--chart-grid);
+        }
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 45px;
+            flex: 1;
+        }
+        .bar {
+            width: 100%;
+            max-width: 35px;
+            border-radius: 6px 6px 0 0;
+            transition: all var(--transition-med);
+            position: relative;
+            min-height: 3px;
+            animation: barGrow 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: bottom;
+        }
+        .bar:hover { filter: brightness(1.2); transform: scaleY(1.02); }
+        .bar-label { margin-top: 8px; font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-align: center; }
+        .bar-value {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--text-main);
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        /* Donut Chart */
+        .donut-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+        }
+        .donut-chart {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            position: relative;
+            transition: transform var(--transition-spring);
+        }
+        .donut-chart:hover { transform: scale(1.05) rotate(5deg); }
+        .donut-hole {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .donut-total { font-size: 1.1rem; font-weight: 900; direction: ltr; }
+        .donut-label { font-size: 0.7rem; color: var(--text-muted); }
+        .donut-legend { display: flex; flex-direction: column; gap: 8px; }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 8px;
+            transition: background var(--transition-fast);
+            cursor: default;
+        }
+        .legend-item:hover { background: var(--table-row-hover); }
+        .legend-color { width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0; }
+        .legend-value { margin-right: auto; font-weight: 700; direction: ltr; color: var(--text-muted); font-size: 0.8rem; padding-right: 12px; }
+
+        /* ============================================================
+           10. CONVERTER
+           ============================================================ */
+        .converter-container { max-width: 550px; margin: 0 auto; }
+        .converter-card { text-align: center; position: relative; overflow: hidden; }
+        .converter-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--primary-glow), transparent, var(--accent-glow), transparent);
+            animation: spin 8s linear infinite;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .converter-inner { position: relative; z-index: 1; }
+        .converter-input-wrap {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        .converter-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--glass-border);
+            background: var(--input-bg);
+            color: var(--text-main);
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: inherit;
+            text-align: center;
+            transition: all var(--transition-fast);
+            direction: ltr;
+        }
+        .converter-input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
+        .currency-tag {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            background: var(--primary-deep);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .swap-btn {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--primary);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all var(--transition-spring);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.8rem auto;
+        }
+        .swap-btn:hover { transform: rotate(180deg) scale(1.1); border-color: var(--primary); box-shadow: 0 0 20px var(--primary-glow); }
+        .result-display {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            direction: ltr;
+            line-height: 1.2;
+            margin: 0.5rem 0;
+            transition: all var(--transition-fast);
+        }
+        .rate-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: var(--calc-btn-bg);
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        /* ============================================================
+           11. CALCULATOR
+           ============================================================ */
+        .calculator-container { max-width: 380px; margin: 0 auto; }
+        .calc-display {
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            text-align: left;
+            direction: ltr;
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .calc-expression {
+            font-size: 0.9rem;
+            color: var(--text-faint);
+            min-height: 1.2em;
+            word-break: break-all;
+        }
+        .calc-result {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--text-main);
+            word-break: break-all;
+            transition: all var(--transition-fast);
+        }
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        .calc-btn {
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--glass-border);
+            background: var(--calc-btn-bg);
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+        .calc-btn:hover { background: var(--calc-btn-hover); transform: translateY(-1px); }
+        .calc-btn:active { transform: scale(0.95); }
+        .calc-btn.operator {
+            background: var(--calc-operator-bg);
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        .calc-btn.operator:hover { background: var(--primary-glow); }
+        .calc-btn.equals {
+            background: linear-gradient(135deg, var(--primary-deep), var(--primary));
+            color: white;
+            box-shadow: var(--shadow-btn);
+        }
+        .calc-btn.equals:hover { box-shadow: var(--shadow-btn-hover); }
+        .calc-btn.clear { color: var(--danger); }
+        .calc-btn.span-2 { grid-column: span 2; }
+
+        /* ============================================================
+           12. AGE CALCULATOR
+           ============================================================ */
+        .ages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .age-card {
+            position: relative;
+            overflow: hidden;
+            padding: 1.3rem;
+        }
+        .age-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        .age-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .age-birth { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1rem; direction: ltr; text-align: right; }
+        .age-main {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            direction: ltr;
+            text-align: right;
+        }
+        .age-detail {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-bottom: 1rem;
+        }
+        .age-detail-item {
+            text-align: center;
+            padding: 0.5rem;
+            background: var(--calc-btn-bg);
+            border-radius: 8px;
+        }
+        .age-detail-value { font-size: 1.1rem; font-weight: 800; direction: ltr; }
+        .age-detail-label { font-size: 0.65rem; color: var(--text-muted); }
+        .age-live {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 0.5rem;
+            background: var(--calc-btn-bg);
+            border-radius: 8px;
+            direction: ltr;
+            font-variant-numeric: tabular-nums;
+        }
+        .age-live-dot {
+            display: inline-block;
+            width: 6px; height: 6px;
+            background: var(--success);
+            border-radius: 50%;
+            margin-left: 4px;
+            animation: pulse 1.5s infinite;
+        }
+        .age-next-bday {
+            margin-top: 0.8rem;
+            padding: 0.5rem 0.8rem;
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--warning);
+            text-align: center;
+        }
+
+        /* ============================================================
+           13. HOLIDAYS
+           ============================================================ */
+        .holidays-section-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin: 1.5rem 0 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .holidays-section-title:first-child { margin-top: 0; }
+        .holiday-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.6rem;
+            transition: all var(--transition-fast);
+        }
+        .holiday-card:hover { transform: translateX(-4px); }
+        .holiday-icon {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .holiday-icon.religious { background: rgba(52, 211, 153, 0.12); }
+        .holiday-icon.national { background: rgba(248, 113, 113, 0.12); }
+        .holiday-icon.school { background: rgba(129, 140, 248, 0.12); }
+        .holiday-info { flex: 1; min-width: 0; }
+        .holiday-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 2px; }
+        .holiday-date { font-size: 0.78rem; color: var(--text-muted); direction: ltr; text-align: right; }
+        .holiday-countdown {
+            text-align: center;
+            padding: 0.4rem 0.8rem;
+            background: var(--calc-btn-bg);
+            border-radius: 8px;
+            min-width: 70px;
+        }
+        .holiday-countdown-value { font-size: 1.1rem; font-weight: 800; color: var(--primary); direction: ltr; }
+        .holiday-countdown-label { font-size: 0.65rem; color: var(--text-muted); }
+        .holiday-passed { opacity: 0.5; }
+        .holiday-note {
+            font-size: 0.75rem;
+            color: var(--text-faint);
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: var(--calc-btn-bg);
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           14. FILTERS BAR
+           ============================================================ */
+        .filters-bar {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 1rem;
+        }
+        .filters-bar .form-control { min-width: 0; }
+        .search-input { flex: 1; min-width: 180px; }
+
+        /* ============================================================
+           15. MODALS
+           ============================================================ */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 1rem;
+        }
         .modal-overlay.open { display: flex; }
-        .modal { 
-            background: #1e293b; border: 1px solid var(--glass-border); 
-            padding: 2.5rem; border-radius: var(--radius-xl); 
-            width: 90%; max-width: 500px; 
-            animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        .modal {
+            background: var(--modal-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1.8rem;
+            border-radius: var(--radius-xl);
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalPop var(--transition-spring);
+            box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.4);
         }
-        @keyframes modalPop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 8px; }
 
-        .empty-state { text-align: center; padding: 4rem; color: var(--text-muted); }
-        .empty-state svg { width: 100px; height: 100px; margin-bottom: 1.5rem; opacity: 0.3; fill: currentColor; }
+        /* ============================================================
+           16. TOAST
+           ============================================================ */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .toast {
+            background: var(--toast-bg);
+            backdrop-filter: blur(10px);
+            padding: 0.9rem 1.2rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--glass-border);
+            border-right: 3px solid var(--success);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInToast var(--transition-spring);
+            min-width: 280px;
+            max-width: 380px;
+            color: var(--text-main);
+            box-shadow: var(--shadow-card-hover);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .toast.error { border-right-color: var(--danger); }
+        .toast-icon { font-size: 1.1rem; flex-shrink: 0; }
 
-        /* Responsive */
+        /* ============================================================
+           17. EMPTY STATES
+           ============================================================ */
+        .empty-state {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+        }
+        .empty-state-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
+        .empty-state p { margin-bottom: 1rem; font-size: 0.9rem; }
+
+        /* ============================================================
+           18. VIEWS
+           ============================================================ */
+        .view-section { display: none; }
+        .view-section.active { display: block; animation: fadeIn 0.35s ease; }
+
+        /* ============================================================
+           19. MOBILE
+           ============================================================ */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 200;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+        }
+        .mobile-toggle:hover { background: var(--glass-bg-hover); }
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: 90;
+        }
+        .mobile-overlay.show { display: block; }
+
         @media (max-width: 768px) {
-            .sidebar { position: fixed; right: -280px; height: 100%; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+            html { font-size: 14px; }
+            .sidebar {
+                position: fixed;
+                right: -260px;
+                height: 100%;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+                z-index: 150;
+            }
             .sidebar.open { right: 0; }
             .mobile-toggle { display: flex; align-items: center; justify-content: center; }
-            .main-content { padding: 1.5rem; padding-top: 5rem; }
+            .main-content { padding: 1rem; padding-top: 4rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .donut-wrapper { flex-direction: column; }
+            .result-display { font-size: 2.2rem; }
+            .ages-grid { grid-template-columns: 1fr; }
+            .page-title { font-size: 1.2rem; }
+        }
+
+        @media (max-width: 480px) {
             .stats-grid { grid-template-columns: 1fr; }
-            .result-display { font-size: 3rem; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1200px) {
+            html { font-size: 14px; }
+            .sidebar { width: 200px; min-width: 200px; padding: 1rem; }
+            .main-content { padding: 1.2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1201px) {
+            .main-content { padding: 2rem 2.5rem; }
+        }
+
+        /* ============================================================
+           20. MISC UTILITIES
+           ============================================================ */
+        .text-muted { color: var(--text-muted); }
+        .text-danger { color: var(--danger); }
+        .text-success { color: var(--success); }
+        .text-primary { color: var(--primary); }
+        .fw-bold { font-weight: 700; }
+        .ltr { direction: ltr; text-align: right; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .gap-1 { gap: 0.5rem; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .section-card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .danger-zone {
+            border-color: rgba(248, 113, 113, 0.2);
+            background: linear-gradient(145deg, rgba(248, 113, 113, 0.03) 0%, var(--glass-bg) 100%);
+        }
+
+        .keyboard-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            background: var(--calc-btn-bg);
+            border-radius: 6px;
+            font-size: 0.7rem;
+            color: var(--text-faint);
+            border: 1px solid var(--glass-border);
+            direction: ltr;
         }
     </style>
 </head>
 <body>
 
     <!-- Mobile Toggle -->
-    <button class="mobile-toggle" onclick="app.ui.toggleSidebar()">☰</button>
+    <button class="mobile-toggle" onclick="app.ui.toggleSidebar()" aria-label="القائمة">☰</button>
+    <div class="mobile-overlay" id="mobile-overlay" onclick="app.ui.toggleSidebar()"></div>
 
-    <!-- Sidebar Navigation -->
+    <!-- ==================== SIDEBAR ==================== -->
     <aside class="sidebar" id="sidebar">
         <div class="logo">
             <span>💎</span> مصاريفي برو
@@ -298,221 +1096,386 @@
             <li class="nav-item" data-view="converter" onclick="app.router.navigate('converter')">
                 <span class="nav-icon">💱</span> محول العملات
             </li>
+            <li class="nav-item" data-view="calculator" onclick="app.router.navigate('calculator')">
+                <span class="nav-icon">🔢</span> الآلة الحاسبة
+            </li>
+            <li class="nav-item" data-view="ages" onclick="app.router.navigate('ages')">
+                <span class="nav-icon">🎂</span> أعمار العائلة
+            </li>
+            <li class="nav-item" data-view="holidays" onclick="app.router.navigate('holidays')">
+                <span class="nav-icon">🎉</span> العطل والأعياد
+            </li>
             <li class="nav-item" data-view="reports" onclick="app.router.navigate('reports')">
-                <span class="nav-icon">📈</span> التقارير
+                <span class="nav-icon">📈</span> التحليلات
             </li>
             <li class="nav-item" data-view="settings" onclick="app.router.navigate('settings')">
                 <span class="nav-icon">⚙️</span> الإعدادات
             </li>
         </ul>
-        <div style="margin-top: auto;">
-            <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="app.theme.toggle()">
-                🌓 تبديل الوضع
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" onclick="app.theme.toggle()" id="theme-btn">
+                <span id="theme-icon">☀️</span>
+                <span id="theme-text">الوضع النهاري</span>
             </button>
         </div>
     </aside>
 
-    <!-- Main Content Area -->
-    <main class="main-content">
-        
-        <!-- DASHBOARD VIEW -->
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content" id="main-content">
+
+        <!-- ========== DASHBOARD ========== -->
         <section id="view-dashboard" class="view-section active">
-            <h2 style="margin-bottom: 2rem; font-weight: 800; font-size: 2rem;">نظرة عامة 👋</h2>
+            <div class="page-header">
+                <h2 class="page-header-title page-title">📊 نظرة عامة</h2>
+                <div class="quick-actions">
+                    <button class="btn btn-primary" onclick="app.ui.openModal()">+ إضافة مصروف</button>
+                </div>
+            </div>
+
             <div class="stats-grid">
                 <div class="card stat-card">
-                    <div class="stat-icon">💸</div>
+                    <div class="stat-icon purple">💸</div>
+                    <div class="stat-value" id="dash-total">0.00 MAD</div>
                     <div class="stat-label">إجمالي المصاريف</div>
-                    <div class="stat-value" id="dash-total">0 MAD</div>
                 </div>
                 <div class="card stat-card">
-                    <div class="stat-icon">📅</div>
+                    <div class="stat-icon pink">📅</div>
+                    <div class="stat-value" id="dash-month">0.00 MAD</div>
                     <div class="stat-label">مصاريف هذا الشهر</div>
-                    <div class="stat-value" id="dash-month">0 MAD</div>
                 </div>
                 <div class="card stat-card">
-                    <div class="stat-icon">🧮</div>
-                    <div class="stat-label">عدد العمليات</div>
+                    <div class="stat-icon green">🧮</div>
                     <div class="stat-value" id="dash-count">0</div>
+                    <div class="stat-label">عدد العمليات</div>
                 </div>
                 <div class="card stat-card">
-                    <div class="stat-icon">📉</div>
+                    <div class="stat-icon orange">📉</div>
+                    <div class="stat-value" id="dash-avg">0.00 MAD</div>
                     <div class="stat-label">متوسط المصروف</div>
-                    <div class="stat-value" id="dash-avg">0 MAD</div>
                 </div>
             </div>
 
             <div class="card">
-                <h3 style="margin-bottom: 1.5rem; font-weight: 700;">آخر العمليات ⚡</h3>
+                <div class="section-card-title">⚡ آخر العمليات</div>
                 <div class="table-responsive">
                     <table id="recent-transactions-table">
-                        <thead><tr><th>الوصف</th><th>الشخص</th><th>التاريخ</th><th>المبلغ</th></tr></thead>
-                        <tbody><!-- Populated by JS --></tbody>
+                        <thead>
+                            <tr><th>الوصف</th><th>الشخص</th><th>الوقت</th><th>المبلغ</th></tr>
+                        </thead>
+                        <tbody></tbody>
                     </table>
                 </div>
                 <div id="dash-empty" class="empty-state" style="display:none;">
-                    <svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2zm-7 8l-4-4h3V7h2v10h3l-4 4z"/></svg>
+                    <div class="empty-state-icon">📭</div>
                     <p>لا توجد عمليات حديثة للعرض</p>
                 </div>
             </div>
         </section>
 
-        <!-- EXPENSES VIEW -->
+        <!-- ========== EXPENSES ========== -->
         <section id="view-expenses" class="view-section">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 15px;">
-                <h2 style="font-weight: 800; font-size: 2rem;">سجل المصاريف 📝</h2>
-                <button class="btn btn-primary" onclick="app.ui.openModal()">
-                    <span style="font-size: 1.2rem;">+</span> إضافة جديد
-                </button>
+            <div class="page-header">
+                <h2 class="page-title">📝 سجل المصاريف</h2>
+                <button class="btn btn-primary" onclick="app.ui.openModal()">+ إضافة جديد</button>
             </div>
 
-            <!-- Filters -->
-            <div class="card" style="padding: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 2rem;">
-                <input type="text" class="form-control" placeholder="بحث سريع..." style="flex: 1; min-width: 250px;" oninput="app.expenses.handleSearch(this.value)">
-                <select class="form-control" style="width: auto; min-width: 180px;" onchange="app.expenses.handleFilterCategory(this.value)">
-                    <option value="all">كل الفئات</option>
-                    <option value="food">طعام 🍔</option>
-                    <option value="transport">مواصلات 🚕</option>
-                    <option value="bills">فواتير 💡</option>
-                    <option value="shopping">تسوق 🛍️</option>
-                    <option value="health">صحة 🏥</option>
-                    <option value="other">أخرى 📦</option>
+            <div class="card filters-bar">
+                <input type="text" class="form-control search-input" placeholder="🔍 بحث سريع..." oninput="app.expenses.handleSearch(this.value)">
+                <select class="form-control" style="min-width:140px" onchange="app.expenses.handleFilterCategory(this.value)">
+                    <option value="all">📁 كل الفئات</option>
+                    <option value="food">🍔 طعام</option>
+                    <option value="transport">🚕 مواصلات</option>
+                    <option value="bills">💡 فواتير</option>
+                    <option value="shopping">🛍️ تسوق</option>
+                    <option value="health">🏥 صحة</option>
+                    <option value="education">📚 تعليم</option>
+                    <option value="housing">🏠 سكن</option>
+                    <option value="entertainment">🎮 ترفيه</option>
+                    <option value="clothing">👕 ملابس</option>
+                    <option value="gifts">🎁 هدايا</option>
+                    <option value="sadaqa">🤲 صدقة / زكاة</option>
+                    <option value="other">📦 أخرى</option>
                 </select>
-                <input type="month" class="form-control" style="width: auto;" onchange="app.expenses.handleFilterDate(this.value)">
+                <select class="form-control" style="min-width:130px" onchange="app.expenses.handleFilterPerson(this.value)">
+                    <option value="all">👥 كل الأشخاص</option>
+                    <option value="براهيم">براهيم</option>
+                    <option value="وفاء">وفاء</option>
+                    <option value="زكرياء">زكرياء</option>
+                    <option value="ياسين">ياسين</option>
+                    <option value="عبد الله">عبد الله</option>
+                    <option value="ميمي">ميمي</option>
+                </select>
+                <input type="month" class="form-control" style="min-width:140px" onchange="app.expenses.handleFilterDate(this.value)">
             </div>
 
-            <!-- List -->
-            <div class="card" style="padding: 0; overflow: hidden;">
+            <div class="card" style="padding: 0.8rem;">
                 <div class="table-responsive">
                     <table id="expenses-table">
-                        <thead style="background: rgba(255,255,255,0.02);"><tr><th>الوصف</th><th>الشخص</th><th>الفئة</th><th>التاريخ</th><th>المبلغ</th><th style="text-align: center;">إجراءات</th></tr></thead>
-                        <tbody><!-- Populated by JS --></tbody>
+                        <thead>
+                            <tr>
+                                <th>الوصف</th><th>الشخص</th><th>الفئة</th>
+                                <th>التاريخ</th><th>الوقت</th><th>المبلغ</th><th style="text-align:center;">إجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
                     </table>
                 </div>
                 <div id="expenses-empty" class="empty-state" style="display:none;">
-                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    <div class="empty-state-icon">📋</div>
                     <p>السجل فارغ تماماً</p>
-                    <button class="btn btn-primary" style="margin-top:15px" onclick="app.ui.openModal()">ابدأ الإضافة الآن</button>
+                    <button class="btn btn-primary" onclick="app.ui.openModal()">ابدأ الإضافة الآن</button>
                 </div>
             </div>
         </section>
 
-        <!-- CONVERTER VIEW -->
+        <!-- ========== CONVERTER ========== -->
         <section id="view-converter" class="view-section">
-            <h2 style="margin-bottom: 2rem; text-align: center; font-weight: 800; font-size: 2rem;">محول العملات الذكي 💱</h2>
-            <div class="card converter-box">
-                <div class="converter-glow"></div>
-                <div class="form-group">
-                    <label class="form-label" style="font-size: 1.1rem;">من درهم مغربي (MAD)</label>
-                    <input type="number" class="form-control" id="convert-mad" placeholder="0.00" oninput="app.converter.convert()" style="font-size: 1.5rem; text-align: center; font-weight: 700; border-color: var(--primary);">
-                </div>
-                
-                <div style="font-size: 2.5rem; color: var(--text-muted); margin: 1rem 0; animation: float 3s ease-in-out infinite;">⬇️</div>
-                
-                <div class="result-display">
-                    <span id="convert-result">0.00</span> <span style="font-size: 1.5rem; opacity: 0.7;">MAR</span>
-                </div>
-                <div style="display: inline-block; padding: 8px 20px; background: rgba(255,255,255,0.05); border-radius: 30px; border: 1px solid var(--glass-border); color: var(--text-muted); font-size: 0.9rem;">
-                    سعر الصرف الثابت: 1 MAD = 20 MAR
+            <div class="page-header">
+                <h2 class="page-title">💱 محول العملات الذكي</h2>
+            </div>
+            <div class="converter-container">
+                <div class="card converter-card">
+                    <div class="converter-inner">
+                        <div class="form-group">
+                            <label class="form-label" id="convert-from-label">من درهم مغربي (MAD)</label>
+                            <div class="converter-input-wrap">
+                                <input type="number" class="converter-input" id="convert-input" placeholder="0.00" oninput="app.converter.convert()" min="0" step="0.01">
+                                <span class="currency-tag" id="convert-from-tag">MAD</span>
+                            </div>
+                        </div>
+
+                        <button class="swap-btn" onclick="app.converter.swap()" title="تبديل الاتجاه">🔄</button>
+
+                        <div class="form-group">
+                            <label class="form-label" id="convert-to-label">إلى ريال مغربي (MAR)</label>
+                            <div class="result-display">
+                                <span id="convert-result">0.00</span>
+                            </div>
+                            <span class="currency-tag" style="position:static; transform:none; display:inline-block;" id="convert-to-tag">MAR</span>
+                        </div>
+
+                        <div class="rate-badge mt-2">
+                            <span>💡</span>
+                            <span>1 درهم مغربي = 20 ريال مغربي</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- REPORTS VIEW -->
+        <!-- ========== CALCULATOR ========== -->
+        <section id="view-calculator" class="view-section">
+            <div class="page-header">
+                <h2 class="page-title">🔢 الآلة الحاسبة</h2>
+            </div>
+            <div class="calculator-container">
+                <div class="card" style="padding: 1.2rem;">
+                    <div class="calc-display">
+                        <div class="calc-expression" id="calc-expression"></div>
+                        <div class="calc-result" id="calc-result">0</div>
+                    </div>
+                    <div class="calc-grid">
+                        <button class="calc-btn clear" onclick="app.calculator.clear()">C</button>
+                        <button class="calc-btn operator" onclick="app.calculator.input('±')">±</button>
+                        <button class="calc-btn operator" onclick="app.calculator.input('%')">%</button>
+                        <button class="calc-btn operator" onclick="app.calculator.input('÷')">÷</button>
+
+                        <button class="calc-btn" onclick="app.calculator.input('7')">7</button>
+                        <button class="calc-btn" onclick="app.calculator.input('8')">8</button>
+                        <button class="calc-btn" onclick="app.calculator.input('9')">9</button>
+                        <button class="calc-btn operator" onclick="app.calculator.input('×')">×</button>
+
+                        <button class="calc-btn" onclick="app.calculator.input('4')">4</button>
+                        <button class="calc-btn" onclick="app.calculator.input('5')">5</button>
+                        <button class="calc-btn" onclick="app.calculator.input('6')">6</button>
+                        <button class="calc-btn operator" onclick="app.calculator.input('-')">−</button>
+
+                        <button class="calc-btn" onclick="app.calculator.input('1')">1</button>
+                        <button class="calc-btn" onclick="app.calculator.input('2')">2</button>
+                        <button class="calc-btn" onclick="app.calculator.input('3')">3</button>
+                        <button class="calc-btn operator" onclick="app.calculator.input('+')">+</button>
+
+                        <button class="calc-btn span-2" onclick="app.calculator.input('0')">0</button>
+                        <button class="calc-btn" onclick="app.calculator.input('.')">.</button>
+                        <button class="calc-btn equals" onclick="app.calculator.calculate()">=</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== AGES ========== -->
+        <section id="view-ages" class="view-section">
+            <div class="page-header">
+                <h2 class="page-title">🎂 أعمار العائلة</h2>
+                <div class="rate-badge">
+                    <span class="age-live-dot"></span>
+                    <span>تحديث مباشر كل ثانية</span>
+                </div>
+            </div>
+            <div class="ages-grid" id="ages-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ========== HOLIDAYS ========== -->
+        <section id="view-holidays" class="view-section">
+            <div class="page-header">
+                <h2 class="page-title">🎉 العطل والأعياد في المغرب</h2>
+            </div>
+            <div id="holidays-container">
+                <!-- Populated by JS -->
+            </div>
+            <div class="holiday-note">
+                ⚠️ <strong>ملاحظة:</strong> تواريخ الأعياد الدينية تقريبية وتعتمد على رؤية الهلال.
+                التواريخ المعروضة هي التقديرات الفلكية وقد تتغير بيوم أو يومين حسب الإعلان الرسمي من وزارة الأوقاف والشؤون الإسلامية المغربية.
+            </div>
+        </section>
+
+        <!-- ========== REPORTS ========== -->
         <section id="view-reports" class="view-section">
-            <h2 style="margin-bottom: 2rem; font-weight: 800; font-size: 2rem;">التحليلات المتقدمة 📈</h2>
-            <div class="card">
-                <h3 style="margin-bottom: 2rem; font-weight: 700;">توزيع المصاريف حسب الفئة</h3>
-                <div id="category-chart" class="chart-container"></div>
+            <div class="page-header">
+                <h2 class="page-title">📈 التحليلات المتقدمة</h2>
             </div>
+
             <div class="card">
-                <h3 style="margin-bottom: 2rem; font-weight: 700;">النشاط المالي آخر 6 أشهر</h3>
-                <div id="monthly-chart" class="chart-container"></div>
+                <div class="section-card-title">🍩 توزيع المصاريف حسب الفئة</div>
+                <div class="donut-wrapper" id="donut-wrapper">
+                    <div class="donut-chart" id="donut-chart">
+                        <div class="donut-hole">
+                            <div class="donut-total" id="donut-total">0</div>
+                            <div class="donut-label">MAD إجمالي</div>
+                        </div>
+                    </div>
+                    <div class="donut-legend" id="donut-legend"></div>
+                </div>
+                <div id="donut-empty" class="empty-state" style="display:none;">
+                    <div class="empty-state-icon">📊</div>
+                    <p>لا توجد بيانات كافية للرسم البياني</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="section-card-title">📊 المصاريف حسب الفئة (أعمدة)</div>
+                <div class="chart-container" id="category-chart"></div>
+            </div>
+
+            <div class="card">
+                <div class="section-card-title">📅 النشاط المالي آخر 6 أشهر</div>
+                <div class="chart-container" id="monthly-chart"></div>
             </div>
         </section>
 
-        <!-- SETTINGS VIEW -->
+        <!-- ========== SETTINGS ========== -->
         <section id="view-settings" class="view-section">
-            <h2 style="margin-bottom: 2rem; font-weight: 800; font-size: 2rem;">الإعدادات والنظام ⚙️</h2>
-            
+            <div class="page-header">
+                <h2 class="page-title">⚙️ الإعدادات والنظام</h2>
+            </div>
+
             <div class="card">
-                <h3 style="margin-bottom: 1rem;">إدارة البيانات ☁️</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">قم بتصدير نسخة احتياطية من بياناتك أو استيرادها من جهازك.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div class="section-card-title">☁️ إدارة البيانات</div>
+                <p class="text-muted mb-2" style="font-size:0.85rem;">قم بتصدير نسخة احتياطية من بياناتك أو استيرادها من جهازك.</p>
+                <div class="quick-actions">
                     <button class="btn btn-outline" onclick="app.exportManager.exportJSON()">📥 تصدير JSON</button>
                     <button class="btn btn-outline" onclick="app.exportManager.exportCSV()">📊 تصدير CSV</button>
                     <button class="btn btn-primary" onclick="document.getElementById('import-file').click()">📤 استيراد بيانات</button>
-                    <input type="file" id="import-file" accept=".json" style="display: none;" onchange="app.exportManager.importJSON(this)">
+                    <input type="file" id="import-file" accept=".json" style="display:none;" onchange="app.exportManager.importJSON(this)">
                 </div>
             </div>
 
-            <div class="card" style="border-color: rgba(239, 68, 68, 0.3); background: linear-gradient(145deg, rgba(239, 68, 68, 0.05) 0%, rgba(30, 41, 59, 0.7) 100%);">
-                <h3 style="color: var(--danger); margin-bottom: 1rem;">منطقة الخطر ⚠️</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">حذف جميع البيانات المخزنة محلياً. هذا الإجراء لا يمكن التراجع عنه.</p>
+            <div class="card">
+                <div class="section-card-title">⌨️ اختصارات لوحة المفاتيح</div>
+                <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>إضافة مصروف جديد</span>
+                        <span class="keyboard-hint">Ctrl + N</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>إغلاق النافذة المنبثقة</span>
+                        <span class="keyboard-hint">Esc</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card danger-zone">
+                <div class="section-card-title text-danger">⚠️ منطقة الخطر</div>
+                <p class="text-muted mb-2" style="font-size:0.85rem;">حذف جميع البيانات المخزنة محلياً. هذا الإجراء لا يمكن التراجع عنه.</p>
                 <button class="btn btn-danger" onclick="app.storage.clearAll()">🗑️ مسح كل شيء</button>
             </div>
         </section>
 
     </main>
 
-    <!-- ADD/EDIT MODAL -->
+    <!-- ==================== ADD/EDIT MODAL ==================== -->
     <div class="modal-overlay" id="expense-modal">
         <div class="modal">
-            <h2 id="modal-title" style="margin-bottom: 2rem; font-weight: 800;">إضافة مصروف جديد ✨</h2>
+            <h2 class="modal-title" id="modal-title">✨ إضافة مصروف جديد</h2>
             <form id="expense-form" onsubmit="app.expenses.handleSubmit(event)">
                 <input type="hidden" id="exp-id">
-                <div class="form-group">
-                    <label class="form-label">المبلغ (درهم مغربي)</label>
-                    <input type="number" step="0.01" min="0.01" class="form-control" id="exp-amount" required placeholder="0.00">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">المبلغ (درهم مغربي) *</label>
+                        <input type="number" step="0.01" min="0.01" class="form-control" id="exp-amount" required placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">التاريخ *</label>
+                        <input type="date" class="form-control" id="exp-date" required>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">الوصف</label>
-                    <input type="text" class="form-control" id="exp-desc" required maxlength="50" placeholder="مثال: وجبة غداء">
+                    <label class="form-label">الوقت (الساعة والدقيقة)</label>
+                    <input type="time" class="form-control" id="exp-time" value="12:00">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">الشخص المعني</label>
-                    <select class="form-control" id="exp-person">
-                        <option value="">-- اختر اسماً --</option>
-                        <option value="محمد">محمد 👨</option>
-                        <option value="فاطمة">فاطمة 👩</option>
-                        <option value="يوسف">يوسف 👦</option>
-                        <option value="خديجة">خديجة 👧</option>
-                        <option value="أحمد">أحمد 👴</option>
-                        <option value="أمين">أمين 🧑</option>
-                        <option value="سارة">سارة 👱‍♀️</option>
-                        <option value="كريم">كريم 🧔</option>
-                        <option value="other">شخص آخر...</option>
-                    </select>
+                    <label class="form-label">الوصف *</label>
+                    <input type="text" class="form-control" id="exp-desc" required maxlength="60" placeholder="مثال: وجبة غداء، تعبئة الهاتف...">
                 </div>
-                <div class="form-group">
-                    <label class="form-label">الفئة</label>
-                    <select class="form-control" id="exp-category" required>
-                        <option value="food">طعام 🍔</option>
-                        <option value="transport">مواصلات 🚕</option>
-                        <option value="bills">فواتير 💡</option>
-                        <option value="shopping">تسوق 🛍️</option>
-                        <option value="health">صحة 🏥</option>
-                        <option value="other">أخرى 📦</option>
-                    </select>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">الشخص المعني</label>
+                        <select class="form-control" id="exp-person">
+                            <option value="">-- بدون --</option>
+                            <option value="براهيم">براهيم</option>
+                            <option value="وفاء">وفاء</option>
+                            <option value="زكرياء">زكرياء</option>
+                            <option value="ياسين">ياسين</option>
+                            <option value="عبد الله">عبد الله</option>
+                            <option value="ميمي">ميمي</option>
+                            <option value="اخر">اخر</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">الفئة *</label>
+                        <select class="form-control" id="exp-category" required>
+                            <option value="food">🍔 طعام</option>
+                            <option value="transport">🚕 مواصلات</option>
+                            <option value="bills">💡 فواتير</option>
+                            <option value="shopping">🛍️ تسوق</option>
+                            <option value="health">🏥 صحة</option>
+                            <option value="education">📚 تعليم</option>
+                            <option value="housing">🏠 سكن</option>
+                            <option value="entertainment">🎮 ترفيه</option>
+                            <option value="clothing">👕 ملابس</option>
+                            <option value="gifts">🎁 هدايا</option>
+                            <option value="sadaqa">🤲 صدقة / زكاة</option>
+                            <option value="other">📦 أخرى</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">التاريخ</label>
-                    <input type="date" class="form-control" id="exp-date" required>
-                </div>
-                <div style="display: flex; gap: 15px; justify-content: flex-end; margin-top: 2rem;">
+                <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:1.2rem;">
                     <button type="button" class="btn btn-outline" onclick="app.ui.closeModal()">إلغاء</button>
-                    <button type="submit" class="btn btn-primary" style="min-width: 120px;">حفظ 💾</button>
+                    <button type="submit" class="btn btn-primary" style="min-width:110px;">حفظ 💾</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- CONFIRM DELETE MODAL -->
+    <!-- ==================== CONFIRM DELETE MODAL ==================== -->
     <div class="modal-overlay" id="confirm-modal">
-        <div class="modal" style="text-align: center; max-width: 400px;">
-            <div style="font-size: 4rem; margin-bottom: 1rem;">🗑️</div>
-            <h3 style="margin-bottom: 1rem; font-weight: 800;">هل أنت متأكد؟</h3>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">سيتم حذف هذا السجل نهائياً من قاعدة البيانات المحلية.</p>
-            <div style="display: flex; gap: 15px; justify-content: center;">
+        <div class="modal" style="text-align:center; max-width:380px;">
+            <div style="font-size:3rem; margin-bottom:0.8rem;">🗑️</div>
+            <h3 style="margin-bottom:0.6rem; font-weight:800;">هل أنت متأكد؟</h3>
+            <p class="text-muted" style="margin-bottom:1.5rem; font-size:0.9rem;">سيتم حذف هذا السجل نهائياً.</p>
+            <div style="display:flex; gap:10px; justify-content:center;">
                 <button class="btn btn-outline" onclick="document.getElementById('confirm-modal').classList.remove('open')">تراجع</button>
                 <button class="btn btn-danger" id="confirm-delete-btn">نعم، احذف</button>
             </div>
@@ -522,15 +1485,13 @@
     <!-- TOAST CONTAINER -->
     <div id="toast-container"></div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        /**
-         * ==========================================
-         * STORAGE MANAGER
-         * ==========================================
-         */
+        /* ============================================================
+           STORAGE MANAGER - LocalStorage operations
+           ============================================================ */
         class StorageManager {
-            constructor(key = 'expense_app_ma_pro_v2') {
+            constructor(key = 'expense_ma_pro_v3') {
                 this.key = key;
             }
 
@@ -539,7 +1500,7 @@
                     const data = localStorage.getItem(this.key);
                     return data ? JSON.parse(data) : [];
                 } catch (e) {
-                    console.error('Storage Error:', e);
+                    console.error('Storage read error:', e);
                     return [];
                 }
             }
@@ -549,64 +1510,75 @@
                     localStorage.setItem(this.key, JSON.stringify(data));
                     return true;
                 } catch (e) {
-                    console.error('Save Error:', e);
+                    console.error('Storage save error:', e);
                     return false;
                 }
             }
 
             clearAll() {
-                if(confirm('⚠️ تحذير أخير: هل تريد حقاً حذف جميع البيانات؟')) {
+                if (confirm('⚠️ تحذير أخير: هل تريد حقاً حذف جميع البيانات؟\nلا يمكن التراجع عن هذا الإجراء.')) {
                     localStorage.removeItem(this.key);
                     window.location.reload();
                 }
             }
         }
 
-        /**
-         * ==========================================
-         * NOTIFICATION MANAGER
-         * ==========================================
-         */
+        /* ============================================================
+           NOTIFICATION MANAGER - Toast messages
+           ============================================================ */
         class NotificationManager {
             show(message, type = 'success') {
                 const container = document.getElementById('toast-container');
                 const toast = document.createElement('div');
-                toast.className = `toast`;
-                toast.style.borderRightColor = type === 'success' ? 'var(--success)' : 'var(--danger)';
-                toast.innerHTML = `<span style="font-size:1.2rem">${type === 'success' ? '✅' : '❌'}</span> <span style="font-weight:500">${message}</span>`;
-                
+                toast.className = `toast ${type === 'error' ? 'error' : ''}`;
+                toast.style.borderRightColor = type === 'error' ? 'var(--danger)' : 'var(--success)';
+                toast.innerHTML = `
+                    <span class="toast-icon">${type === 'error' ? '❌' : '✅'}</span>
+                    <span>${message}</span>
+                `;
                 container.appendChild(toast);
-                
+
                 setTimeout(() => {
                     toast.style.opacity = '0';
                     toast.style.transform = 'translateX(-20px) scale(0.9)';
+                    toast.style.transition = 'all 0.3s ease';
                     setTimeout(() => toast.remove(), 300);
-                }, 3500);
+                }, 3000);
             }
         }
 
-        /**
-         * ==========================================
-         * THEME MANAGER
-         * ==========================================
-         */
+        /* ============================================================
+           THEME MANAGER - Dark / Light mode
+           ============================================================ */
         class ThemeManager {
             constructor() {
-                // This design is dark-only for the "Pro/Cyber" look, 
-                // but toggle can switch accent colors if needed later.
-                // For now, we keep it consistent.
+                this.currentTheme = localStorage.getItem('ma_theme') || 'dark';
+                this.apply();
             }
+
             toggle() {
-                // Placeholder for future light mode or accent change
-                new NotificationManager().show('الوضع الداكن هو الوضع الافتراضي للنسخة البرو', 'success');
+                this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('ma_theme', this.currentTheme);
+                this.apply();
+            }
+
+            apply() {
+                document.documentElement.setAttribute('data-theme', this.currentTheme);
+                const icon = document.getElementById('theme-icon');
+                const text = document.getElementById('theme-text');
+                if (this.currentTheme === 'dark') {
+                    icon.textContent = '☀️';
+                    text.textContent = 'الوضع النهاري';
+                } else {
+                    icon.textContent = '🌙';
+                    text.textContent = 'الوضع الليلي';
+                }
             }
         }
 
-        /**
-         * ==========================================
-         * EXPORT MANAGER
-         * ==========================================
-         */
+        /* ============================================================
+           EXPORT MANAGER - JSON / CSV export & import
+           ============================================================ */
         class ExportManager {
             constructor(storage, notify) {
                 this.storage = storage;
@@ -616,38 +1588,35 @@
             exportJSON() {
                 const data = this.storage.get();
                 if (!data.length) return this.notify.show('لا توجد بيانات للتصدير', 'error');
-                
-                const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
-                this.downloadFile(blob, `MA_Expenses_Backup_${new Date().toISOString().slice(0,10)}.json`);
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                this.downloadFile(blob, `MA_Expenses_${new Date().toISOString().slice(0, 10)}.json`);
                 this.notify.show('تم تصدير النسخة الاحتياطية بنجاح');
             }
 
             exportCSV() {
                 const data = this.storage.get();
                 if (!data.length) return this.notify.show('لا توجد بيانات للتصدير', 'error');
-
-                const headers = ['ID,Amount,Description,Person,Category,Date'];
-                const rows = data.map(e => `${e.id},${e.amount},"${e.description}","${e.person || ''}",${e.category},${e.date}`);
+                const headers = ['ID,Amount,Description,Person,Category,Date,Time'];
+                const rows = data.map(e =>
+                    `${e.id},${e.amount},"${e.description}","${e.person || ''}",${e.category},${e.date},${e.time || ''}`
+                );
                 const csvContent = "\uFEFF" + headers.concat(rows).join('\n');
-                
-                const blob = new Blob([csvContent], {type: 'text/csv;charset=utf-8;'});
-                this.downloadFile(blob, `MA_Expenses_Report_${new Date().toISOString().slice(0,10)}.csv`);
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                this.downloadFile(blob, `MA_Expenses_${new Date().toISOString().slice(0, 10)}.csv`);
                 this.notify.show('تم تصدير ملف CSV بنجاح');
             }
 
             importJSON(input) {
                 const file = input.files[0];
                 if (!file) return;
-
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     try {
                         const importedData = JSON.parse(e.target.result);
-                        if (!Array.isArray(importedData)) throw new Error('Invalid Format');
-                        
+                        if (!Array.isArray(importedData)) throw new Error('Invalid format');
                         this.storage.save(importedData);
                         this.notify.show('تم استيراد البيانات بنجاح');
-                        setTimeout(() => window.location.reload(), 1000);
+                        setTimeout(() => window.location.reload(), 800);
                     } catch (err) {
                         this.notify.show('ملف غير صالح أو تالف', 'error');
                     }
@@ -664,43 +1633,119 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
+                URL.revokeObjectURL(url);
             }
         }
 
-        /**
-         * ==========================================
-         * CHART MANAGER
-         * ==========================================
-         */
+        /* ============================================================
+           CHART MANAGER - Donut + Bar charts (CSS only)
+           ============================================================ */
         class ChartManager {
-            renderCategoryChart(expenses) {
-                const container = document.getElementById('category-chart');
-                container.innerHTML = '';
-                
+            constructor() {
+                this.categoryColors = {
+                    food: '#f87171',
+                    transport: '#60a5fa',
+                    bills: '#fbbf24',
+                    shopping: '#c084fc',
+                    health: '#34d399',
+                    education: '#2dd4bf',
+                    housing: '#fb923c',
+                    entertainment: '#f472b6',
+                    clothing: '#818cf8',
+                    gifts: '#fb7185',
+                    sadaqa: '#a3e635',
+                    other: '#94a3b8'
+                };
+                this.categoryLabels = {
+                    food: '🍔 طعام', transport: '🚕 مواصلات', bills: '💡 فواتير',
+                    shopping: '🛍️ تسوق', health: '🏥 صحة', education: '📚 تعليم',
+                    housing: '🏠 سكن', entertainment: '🎮 ترفيه', clothing: '👕 ملابس',
+                    gifts: '🎁 هدايا', sadaqa: '🤲 صدقة', other: '📦 أخرى'
+                };
+            }
+
+            renderDonutChart(expenses) {
+                const wrapper = document.getElementById('donut-wrapper');
+                const chart = document.getElementById('donut-chart');
+                const legend = document.getElementById('donut-legend');
+                const totalEl = document.getElementById('donut-total');
+                const emptyEl = document.getElementById('donut-empty');
+
                 const categories = {};
+                let total = 0;
                 expenses.forEach(e => {
-                    categories[e.category] = (categories[e.category] || 0) + parseFloat(e.amount);
+                    const amt = parseFloat(e.amount) || 0;
+                    categories[e.category] = (categories[e.category] || 0) + amt;
+                    total += amt;
                 });
 
-                const maxVal = Math.max(...Object.values(categories), 1);
-                const labels = { food: 'طعام', transport: 'مواصلات', bills: 'فواتير', shopping: 'تسوق', health: 'صحة', other: 'أخرى' };
-
                 if (Object.keys(categories).length === 0) {
-                    container.innerHTML = '<div class="empty-state" style="width:100%">لا توجد بيانات كافية للرسم البياني</div>';
+                    wrapper.style.display = 'none';
+                    emptyEl.style.display = 'block';
                     return;
                 }
 
-                Object.entries(categories).forEach(([cat, val]) => {
-                    const heightPercent = (val / maxVal) * 100;
-                    const barHTML = `
-                        <div class="bar-group">
-                            <div class="bar" style="height: ${heightPercent}%;">
-                                <span class="bar-value">${val.toFixed(0)}</span>
-                            </div>
-                            <span class="bar-label">${labels[cat] || cat}</span>
+                wrapper.style.display = 'flex';
+                emptyEl.style.display = 'none';
+                totalEl.textContent = total.toFixed(0);
+
+                // Build conic-gradient
+                let gradientParts = [];
+                let currentAngle = 0;
+                const sorted = Object.entries(categories).sort((a, b) => b[1] - a[1]);
+
+                sorted.forEach(([cat, val]) => {
+                    const angle = (val / total) * 360;
+                    const color = this.categoryColors[cat] || '#94a3b8';
+                    gradientParts.push(`${color} ${currentAngle}deg ${currentAngle + angle}deg`);
+                    currentAngle += angle;
+                });
+
+                chart.style.background = `conic-gradient(${gradientParts.join(', ')})`;
+
+                // Legend
+                legend.innerHTML = sorted.map(([cat, val]) => {
+                    const pct = ((val / total) * 100).toFixed(1);
+                    const color = this.categoryColors[cat] || '#94a3b8';
+                    return `
+                        <div class="legend-item">
+                            <span class="legend-color" style="background:${color}"></span>
+                            <span>${this.categoryLabels[cat] || cat}</span>
+                            <span class="legend-value">${val.toFixed(0)} MAD (${pct}%)</span>
                         </div>
                     `;
-                    container.innerHTML += barHTML;
+                }).join('');
+            }
+
+            renderCategoryBarChart(expenses) {
+                const container = document.getElementById('category-chart');
+                container.innerHTML = '';
+
+                const categories = {};
+                expenses.forEach(e => {
+                    categories[e.category] = (categories[e.category] || 0) + (parseFloat(e.amount) || 0);
+                });
+
+                if (Object.keys(categories).length === 0) {
+                    container.innerHTML = '<div class="empty-state" style="width:100%"><p>لا توجد بيانات</p></div>';
+                    return;
+                }
+
+                const maxVal = Math.max(...Object.values(categories), 1);
+                const sorted = Object.entries(categories).sort((a, b) => b[1] - a[1]);
+
+                sorted.forEach(([cat, val], i) => {
+                    const heightPercent = (val / maxVal) * 100;
+                    const color = this.categoryColors[cat] || '#94a3b8';
+                    const label = (this.categoryLabels[cat] || cat).split(' ')[0];
+                    container.innerHTML += `
+                        <div class="bar-group">
+                            <div class="bar" style="height:${heightPercent}%; background:${color}; animation-delay:${i * 0.08}s; box-shadow: 0 0 12px -2px ${color}44;">
+                                <span class="bar-value">${val.toFixed(0)}</span>
+                            </div>
+                            <span class="bar-label">${label}</span>
+                        </div>
+                    `;
                 });
             }
 
@@ -709,84 +1754,526 @@
                 container.innerHTML = '';
 
                 const months = {};
+                const monthNames = ['يناير', 'فبراير', 'مارس', 'أبريل', 'ماي', 'يونيو', 'يوليوز', 'غشت', 'شتنبر', 'أكتوبر', 'نونبر', 'دجنبر'];
                 const now = new Date();
-                for(let i=5; i>=0; i--) {
+
+                for (let i = 5; i >= 0; i--) {
                     const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-                    const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
-                    months[key] = 0;
+                    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+                    months[key] = { total: 0, label: monthNames[d.getMonth()] };
                 }
 
                 expenses.forEach(e => {
-                    const mKey = e.date.substring(0, 7);
+                    const mKey = (e.date || '').substring(0, 7);
                     if (months.hasOwnProperty(mKey)) {
-                        months[mKey] += parseFloat(e.amount);
+                        months[mKey].total += parseFloat(e.amount) || 0;
                     }
                 });
 
-                const maxVal = Math.max(...Object.values(months), 1);
-                
-                Object.entries(months).forEach(([month, val]) => {
-                    const heightPercent = (val / maxVal) * 100;
-                    const label = month.split('-')[1];
-                    const barHTML = `
+                const maxVal = Math.max(...Object.values(months).map(m => m.total), 1);
+
+                Object.entries(months).forEach(([key, data], i) => {
+                    const heightPercent = (data.total / maxVal) * 100;
+                    container.innerHTML += `
                         <div class="bar-group">
-                            <div class="bar" style="height: ${Math.max(heightPercent, 2)}%; background: linear-gradient(to top, var(--success), #34d399); box-shadow: 0 0 15px -3px rgba(16, 185, 129, 0.4);">
-                                <span class="bar-value">${val.toFixed(0)}</span>
+                            <div class="bar" style="height:${Math.max(heightPercent, 2)}%; background: linear-gradient(to top, var(--primary-deep), var(--primary)); animation-delay:${i * 0.08}s; box-shadow: 0 0 12px -2px var(--primary-glow);">
+                                <span class="bar-value">${data.total.toFixed(0)}</span>
                             </div>
-                            <span class="bar-label">${label}</span>
+                            <span class="bar-label">${data.label}</span>
                         </div>
                     `;
-                    container.innerHTML += barHTML;
                 });
             }
         }
 
-        /**
-         * ==========================================
-         * CURRENCY CONVERTER MANAGER
-         * ==========================================
-         */
+        /* ============================================================
+           CONVERTER MANAGER - MAD <-> MAR (bidirectional)
+           ============================================================ */
         class ConverterManager {
             constructor() {
                 this.rate = 20; // 1 MAD = 20 MAR
+                this.direction = 'mad_to_mar'; // or 'mar_to_mad'
+            }
+
+            swap() {
+                this.direction = this.direction === 'mad_to_mar' ? 'mar_to_mad' : 'mad_to_mar';
+                this.updateLabels();
+                this.convert();
+            }
+
+            updateLabels() {
+                const fromLabel = document.getElementById('convert-from-label');
+                const toLabel = document.getElementById('convert-to-label');
+                const fromTag = document.getElementById('convert-from-tag');
+                const toTag = document.getElementById('convert-to-tag');
+
+                if (this.direction === 'mad_to_mar') {
+                    fromLabel.textContent = 'من درهم مغربي (MAD)';
+                    toLabel.textContent = 'إلى ريال مغربي (MAR)';
+                    fromTag.textContent = 'MAD';
+                    toTag.textContent = 'MAR';
+                } else {
+                    fromLabel.textContent = 'من ريال مغربي (MAR)';
+                    toLabel.textContent = 'إلى درهم مغربي (MAD)';
+                    fromTag.textContent = 'MAR';
+                    toTag.textContent = 'MAD';
+                }
             }
 
             convert() {
-                const madInput = document.getElementById('convert-mad');
+                const input = document.getElementById('convert-input');
                 const resultSpan = document.getElementById('convert-result');
-                
-                let val = parseFloat(madInput.value);
+                let val = parseFloat(input.value);
                 if (isNaN(val) || val < 0) val = 0;
 
-                const result = val * this.rate;
-                // Force English digits format with animation effect via CSS transition on parent
-                resultSpan.textContent = result.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                let result;
+                if (this.direction === 'mad_to_mar') {
+                    result = val * this.rate;
+                } else {
+                    result = val / this.rate;
+                }
+
+                resultSpan.textContent = result.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
             }
         }
 
-        /**
-         * ==========================================
-         * UI MANAGER
-         * ==========================================
-         */
+        /* ============================================================
+           CALCULATOR MANAGER - Simple smooth calculator
+           ============================================================ */
+        class CalculatorManager {
+            constructor() {
+                this.currentInput = '0';
+                this.previousInput = '';
+                this.operator = null;
+                this.shouldResetScreen = false;
+                this.lastExpression = '';
+            }
+
+            get displayResult() { return document.getElementById('calc-result'); }
+            get displayExpression() { return document.getElementById('calc-expression'); }
+
+            input(key) {
+                if (key >= '0' && key <= '9') {
+                    this.handleNumber(key);
+                } else if (key === '.') {
+                    this.handleDecimal();
+                } else if (key === '±') {
+                    this.handleNegate();
+                } else if (key === '%') {
+                    this.handlePercent();
+                } else if (['+', '-', '×', '÷'].includes(key)) {
+                    this.handleOperator(key);
+                }
+                this.updateDisplay();
+            }
+
+            handleNumber(num) {
+                if (this.shouldResetScreen) {
+                    this.currentInput = num;
+                    this.shouldResetScreen = false;
+                } else {
+                    if (this.currentInput === '0') {
+                        this.currentInput = num;
+                    } else {
+                        if (this.currentInput.length >= 15) return;
+                        this.currentInput += num;
+                    }
+                }
+            }
+
+            handleDecimal() {
+                if (this.shouldResetScreen) {
+                    this.currentInput = '0.';
+                    this.shouldResetScreen = false;
+                    return;
+                }
+                if (!this.currentInput.includes('.')) {
+                    this.currentInput += '.';
+                }
+            }
+
+            handleNegate() {
+                if (this.currentInput !== '0') {
+                    if (this.currentInput.startsWith('-')) {
+                        this.currentInput = this.currentInput.substring(1);
+                    } else {
+                        this.currentInput = '-' + this.currentInput;
+                    }
+                }
+            }
+
+            handlePercent() {
+                const val = parseFloat(this.currentInput);
+                if (!isNaN(val)) {
+                    this.currentInput = String(val / 100);
+                }
+            }
+
+            handleOperator(op) {
+                if (this.operator && !this.shouldResetScreen) {
+                    this.calculate(true);
+                }
+                this.previousInput = this.currentInput;
+                this.operator = op;
+                this.shouldResetScreen = true;
+                this.lastExpression = `${this.previousInput} ${op}`;
+            }
+
+            calculate(chained = false) {
+                if (!this.operator || this.previousInput === '') return;
+
+                const prev = parseFloat(this.previousInput);
+                const curr = parseFloat(this.currentInput);
+                let result;
+
+                switch (this.operator) {
+                    case '+': result = prev + curr; break;
+                    case '-': result = prev - curr; break;
+                    case '×': result = prev * curr; break;
+                    case '÷':
+                        if (curr === 0) {
+                            this.currentInput = 'خطأ';
+                            this.lastExpression = 'لا يمكن القسمة على صفر';
+                            this.operator = null;
+                            this.previousInput = '';
+                            this.shouldResetScreen = true;
+                            this.updateDisplay();
+                            return;
+                        }
+                        result = prev / curr;
+                        break;
+                    default: return;
+                }
+
+                // Round to avoid floating point issues
+                result = Math.round(result * 1e10) / 1e10;
+
+                if (!chained) {
+                    this.lastExpression = `${this.previousInput} ${this.operator} ${this.currentInput} =`;
+                }
+
+                this.currentInput = String(result);
+                if (!chained) {
+                    this.operator = null;
+                    this.previousInput = '';
+                }
+                this.shouldResetScreen = true;
+                this.updateDisplay();
+            }
+
+            clear() {
+                this.currentInput = '0';
+                this.previousInput = '';
+                this.operator = null;
+                this.shouldResetScreen = false;
+                this.lastExpression = '';
+                this.updateDisplay();
+            }
+
+            updateDisplay() {
+                let displayVal = this.currentInput;
+                if (displayVal !== 'خطأ' && !isNaN(parseFloat(displayVal)) && isFinite(displayVal)) {
+                    const num = parseFloat(displayVal);
+                    if (Math.abs(num) < 1e15) {
+                        displayVal = num.toLocaleString('en-US', { maximumFractionDigits: 10 });
+                    }
+                }
+                this.displayResult.textContent = displayVal;
+                this.displayExpression.textContent = this.lastExpression;
+            }
+        }
+
+        /* ============================================================
+           AGE CALCULATOR MANAGER - Live family ages
+           ============================================================ */
+        class AgeCalculatorManager {
+            constructor() {
+                this.familyMembers = [
+                    { name: 'ياسين', emoji: '👦', year: 2008, month: 10, day: 3 },
+                    { name: 'وفاء', emoji: '👩', year: 1983, month: 7, day: 21 },
+                    { name: 'زكرياء', emoji: '🧑', year: 2005, month: 11, day: 8 },
+                    { name: 'عبد الله', emoji: '👦', year: 2010, month: 10, day: 7 },
+                    { name: 'ابراهيم', emoji: '👨', year: 1975, month: null, day: null },
+                    { name: 'ميمي', emoji: '👶', year: 2021, month: null, day: null }
+                ];
+                this.timerInterval = null;
+            }
+
+            start() {
+                this.render();
+                this.timerInterval = setInterval(() => this.updateLiveCounters(), 1000);
+            }
+
+            stop() {
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+            }
+
+            render() {
+                const grid = document.getElementById('ages-grid');
+                grid.innerHTML = '';
+
+                this.familyMembers.forEach((member, index) => {
+                    const hasFullDate = member.month !== null && member.day !== null;
+                    const birthDateStr = hasFullDate
+                        ? `${member.year}-${String(member.month).padStart(2, '0')}-${String(member.day).padStart(2, '0')}`
+                        : `${member.year}`;
+
+                    const card = document.createElement('div');
+                    card.className = 'card age-card';
+                    card.style.animationDelay = `${index * 0.08}s`;
+                    card.innerHTML = `
+                        <div class="age-name">${member.emoji} ${member.name}</div>
+                        <div class="age-birth">📅 ${birthDateStr}</div>
+                        <div class="age-main" id="age-main-${index}">--</div>
+                        <div class="age-detail">
+                            <div class="age-detail-item">
+                                <div class="age-detail-value" id="age-years-${index}">--</div>
+                                <div class="age-detail-label">سنة</div>
+                            </div>
+                            <div class="age-detail-item">
+                                <div class="age-detail-value" id="age-months-${index}">--</div>
+                                <div class="age-detail-label">شهر</div>
+                            </div>
+                            <div class="age-detail-item">
+                                <div class="age-detail-value" id="age-days-${index}">--</div>
+                                <div class="age-detail-label">يوم</div>
+                            </div>
+                        </div>
+                        <div class="age-live" id="age-live-${index}">
+                            <span class="age-live-dot"></span> --
+                        </div>
+                        ${hasFullDate ? `<div class="age-next-bday" id="age-bday-${index}">🎂 --</div>` : ''}
+                    `;
+                    grid.appendChild(card);
+                });
+
+                this.updateLiveCounters();
+            }
+
+            calculateAge(birthYear, birthMonth, birthDay) {
+                const now = new Date();
+                const hasFullDate = birthMonth !== null && birthDay !== null;
+
+                if (!hasFullDate) {
+                    // Only year known: approximate age
+                    const years = now.getFullYear() - birthYear;
+                    return { years, months: 0, days: 0, totalDays: years * 365 };
+                }
+
+                const birth = new Date(birthYear, birthMonth - 1, birthDay);
+                let years = now.getFullYear() - birth.getFullYear();
+                let months = now.getMonth() - birth.getMonth();
+                let days = now.getDate() - birth.getDate();
+
+                if (days < 0) {
+                    months--;
+                    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                    days += prevMonth.getDate();
+                }
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+
+                const totalDays = Math.floor((now - birth) / (1000 * 60 * 60 * 24));
+                return { years, months, days, totalDays };
+            }
+
+            getNextBirthday(birthYear, birthMonth, birthDay) {
+                const now = new Date();
+                let nextBday = new Date(now.getFullYear(), birthMonth - 1, birthDay);
+                if (nextBday <= now) {
+                    nextBday = new Date(now.getFullYear() + 1, birthMonth - 1, birthDay);
+                }
+                const diffDays = Math.ceil((nextBday - now) / (1000 * 60 * 60 * 24));
+                return diffDays;
+            }
+
+            updateLiveCounters() {
+                const now = new Date();
+
+                this.familyMembers.forEach((member, index) => {
+                    const age = this.calculateAge(member.year, member.month, member.day);
+
+                    const mainEl = document.getElementById(`age-main-${index}`);
+                    const yearsEl = document.getElementById(`age-years-${index}`);
+                    const monthsEl = document.getElementById(`age-months-${index}`);
+                    const daysEl = document.getElementById(`age-days-${index}`);
+                    const liveEl = document.getElementById(`age-live-${index}`);
+                    const bdayEl = document.getElementById(`age-bday-${index}`);
+
+                    if (mainEl) mainEl.textContent = `${age.years} سنة`;
+                    if (yearsEl) yearsEl.textContent = age.years;
+                    if (monthsEl) monthsEl.textContent = age.months;
+                    if (daysEl) daysEl.textContent = age.days;
+
+                    // Live counter: total days, hours, minutes, seconds
+                    const hasFullDate = member.month !== null && member.day !== null;
+                    if (hasFullDate) {
+                        const birth = new Date(member.year, member.month - 1, member.day);
+                        const diffMs = now - birth;
+                        const totalSeconds = Math.floor(diffMs / 1000);
+                        const totalMinutes = Math.floor(totalSeconds / 60);
+                        const totalHours = Math.floor(totalMinutes / 60);
+                        const totalDays = Math.floor(totalHours / 24);
+
+                        const secs = totalSeconds % 60;
+                        const mins = totalMinutes % 60;
+                        const hrs = totalHours % 24;
+
+                        if (liveEl) {
+                            liveEl.innerHTML = `<span class="age-live-dot"></span> ${totalDays.toLocaleString('en-US')} يوم | ${hrs}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+                        }
+
+                        if (bdayEl) {
+                            const daysToBday = this.getNextBirthday(member.year, member.month, member.day);
+                            if (daysToBday === 0) {
+                                bdayEl.textContent = '🎂 عيد ميلاد سعيد اليوم! 🎉';
+                            } else {
+                                bdayEl.textContent = `🎂 عيد الميلاد القادم بعد ${daysToBday} يوم`;
+                            }
+                        }
+                    } else {
+                        // Approximate: just show total days from Jan 1 of birth year
+                        const birth = new Date(member.year, 0, 1);
+                        const totalDays = Math.floor((now - birth) / (1000 * 60 * 60 * 24));
+                        if (liveEl) {
+                            liveEl.innerHTML = `<span class="age-live-dot"></span> ≈ ${totalDays.toLocaleString('en-US')} يوم (تقريبي)`;
+                        }
+                    }
+                });
+            }
+        }
+
+        /* ============================================================
+           HOLIDAYS MANAGER - Moroccan holidays & school breaks
+           ============================================================ */
+        class HolidaysManager {
+            constructor() {
+                this.holidays = {
+                    religious: [
+                        { name: 'رأس السنة الهجرية 1448', date: '2026-06-17', icon: '🌙' },
+                        { name: 'عيد الأضحى المبارك', date: '2026-05-27', icon: '🐑' },
+                        { name: 'عيد الفطر المبارك', date: '2026-03-20', icon: '🌙' },
+                        { name: 'المولد النبوي الشريف', date: '2026-08-25', icon: '🕌' },
+                        { name: 'ليلة الإسراء والمعراج', date: '2027-01-16', icon: '✨' }
+                    ],
+                    national: [
+                        { name: 'رأس السنة الميلادية', date: '2027-01-01', icon: '🎆' },
+                        { name: 'ذكرى تقديم وثيقة الاستقلال', date: '2027-01-11', icon: '📜' },
+                        { name: 'رأس السنة الأمازيغية', date: '2027-01-14', icon: '🌿' },
+                        { name: 'عيد الشغل', date: '2027-05-01', icon: '👷' },
+                        { name: 'عيد العرش المجيد', date: '2026-07-30', icon: '👑' },
+                        { name: 'ذكرى وادي الذهب', date: '2026-08-14', icon: '🏜️' },
+                        { name: 'ثورة الملك والشعب', date: '2026-08-20', icon: '⚔️' },
+                        { name: 'عيد الشباب', date: '2026-08-21', icon: '🧑‍🤝‍🧑' },
+                        { name: 'ذكرى المسيرة الخضراء', date: '2026-11-06', icon: '🟢' },
+                        { name: 'عيد الاستقلال', date: '2026-11-18', icon: '🇲🇦' }
+                    ],
+                    school: [
+                        { name: 'الدخول المدرسي 2026-2027', date: '2026-09-07', icon: '🏫' },
+                        { name: 'عطلة منتصف الفصل الأول', date: '2026-10-25', icon: '📚' },
+                        { name: 'عطلة نهاية الفصل الأول', date: '2026-12-13', icon: '❄️' },
+                        { name: 'عطلة منتصف السنة', date: '2027-01-25', icon: '🌨️' },
+                        { name: 'عطلة منتصف الفصل الثاني', date: '2027-03-14', icon: '🌸' },
+                        { name: 'عطلة الربيع', date: '2027-04-25', icon: '🌷' },
+                        { name: 'عطلة نهاية السنة الدراسية', date: '2027-07-01', icon: '☀️' }
+                    ]
+                };
+            }
+
+            render() {
+                const container = document.getElementById('holidays-container');
+                container.innerHTML = '';
+
+                const sections = [
+                    { key: 'religious', title: '🕌 الأعياد الدينية', type: 'religious' },
+                    { key: 'national', title: '🇲🇦 الأعياد الوطنية', type: 'national' },
+                    { key: 'school', title: '🏫 العطل المدرسية', type: 'school' }
+                ];
+
+                sections.forEach(section => {
+                    const items = this.holidays[section.key];
+                    // Sort by date
+                    items.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+                    let html = `<div class="holidays-section-title">${section.title}</div>`;
+
+                    items.forEach(item => {
+                        const countdown = this.getCountdown(item.date);
+                        const isPassed = countdown < 0;
+                        const dateObj = new Date(item.date + 'T00:00:00');
+                        const formattedDate = dateObj.toLocaleDateString('en-US', {
+                            year: 'numeric', month: 'long', day: 'numeric'
+                        });
+
+                        html += `
+                            <div class="card holiday-card ${isPassed ? 'holiday-passed' : ''}" style="margin-bottom:0.6rem; padding:1rem;">
+                                <div class="holiday-icon ${section.type}">${item.icon}</div>
+                                <div class="holiday-info">
+                                    <div class="holiday-name">${item.name}</div>
+                                    <div class="holiday-date">${formattedDate}</div>
+                                </div>
+                                <div class="holiday-countdown">
+                                    ${isPassed
+                                        ? '<div class="holiday-countdown-value" style="color:var(--text-faint)">انتهت</div>'
+                                        : `<div class="holiday-countdown-value">${countdown}</div>
+                                           <div class="holiday-countdown-label">يوم متبقي</div>`
+                                    }
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    container.innerHTML += html;
+                });
+            }
+
+            getCountdown(dateStr) {
+                const target = new Date(dateStr + 'T00:00:00');
+                const now = new Date();
+                now.setHours(0, 0, 0, 0);
+                const diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
+                return diff;
+            }
+        }
+
+        /* ============================================================
+           UI MANAGER - DOM manipulation & navigation
+           ============================================================ */
         class UIManager {
             constructor() {
                 this.sidebar = document.getElementById('sidebar');
+                this.overlay = document.getElementById('mobile-overlay');
             }
 
             toggleSidebar() {
                 this.sidebar.classList.toggle('open');
+                this.overlay.classList.toggle('show');
             }
 
             switchView(viewName) {
                 document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-                document.getElementById(`view-${viewName}`).classList.add('active');
-                
+                const target = document.getElementById(`view-${viewName}`);
+                if (target) target.classList.add('active');
+
                 document.querySelectorAll('.nav-item').forEach(el => {
                     el.classList.toggle('active', el.dataset.view === viewName);
                 });
 
-                if (window.innerWidth <= 768) this.sidebar.classList.remove('open');
+                // Scroll to top
+                document.getElementById('main-content').scrollTop = 0;
+
+                if (window.innerWidth <= 768) {
+                    this.sidebar.classList.remove('open');
+                    this.overlay.classList.remove('show');
+                }
             }
 
             openModal(expense = null) {
@@ -795,18 +2282,23 @@
                 const title = document.getElementById('modal-title');
 
                 form.reset();
-                document.getElementById('exp-date').valueAsDate = new Date();
+
+                const now = new Date();
+                document.getElementById('exp-date').value = now.toISOString().split('T')[0];
+                document.getElementById('exp-time').value =
+                    `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
                 if (expense) {
-                    title.textContent = 'تعديل المصروف ✏️';
+                    title.textContent = '✏️ تعديل المصروف';
                     document.getElementById('exp-id').value = expense.id;
                     document.getElementById('exp-amount').value = expense.amount;
                     document.getElementById('exp-desc').value = expense.description;
                     document.getElementById('exp-person').value = expense.person || '';
                     document.getElementById('exp-category').value = expense.category;
                     document.getElementById('exp-date').value = expense.date;
+                    document.getElementById('exp-time').value = expense.time || '12:00';
                 } else {
-                    title.textContent = 'إضافة مصروف جديد ✨';
+                    title.textContent = '✨ إضافة مصروف جديد';
                     document.getElementById('exp-id').value = '';
                 }
                 modal.classList.add('open');
@@ -817,25 +2309,27 @@
             }
 
             formatCurrency(amount) {
-                return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'MAD', minimumFractionDigits: 2 }).format(amount);
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'MAD',
+                    minimumFractionDigits: 2
+                }).format(amount);
             }
 
             getCategoryBadge(category) {
-                const map = {
-                    food: 'badge-food', transport: 'badge-transport', 
-                    bills: 'badge-bills', shopping: 'badge-other',
-                    health: 'badge-other', other: 'badge-other'
+                const labels = {
+                    food: '🍔 طعام', transport: '🚕 مواصلات', bills: '💡 فواتير',
+                    shopping: '🛍️ تسوق', health: '🏥 صحة', education: '📚 تعليم',
+                    housing: '🏠 سكن', entertainment: '🎮 ترفيه', clothing: '👕 ملابس',
+                    gifts: '🎁 هدايا', sadaqa: '🤲 صدقة', other: '📦 أخرى'
                 };
-                const labels = { food: 'طعام', transport: 'مواصلات', bills: 'فواتير', shopping: 'تسوق', health: 'صحة', other: 'أخرى' };
-                return `<span class="badge ${map[category] || 'badge-other'}">${labels[category] || category}</span>`;
+                return `<span class="badge badge-${category}">${labels[category] || category}</span>`;
             }
         }
 
-        /**
-         * ==========================================
-         * MAIN APPLICATION CLASS
-         * ==========================================
-         */
+        /* ============================================================
+           MAIN APPLICATION - ExpenseApp
+           ============================================================ */
         class ExpenseApp {
             constructor() {
                 this.storage = new StorageManager();
@@ -844,34 +2338,50 @@
                 this.ui = new UIManager();
                 this.chart = new ChartManager();
                 this.converter = new ConverterManager();
+                this.calculator = new CalculatorManager();
+                this.ageCalc = new AgeCalculatorManager();
+                this.holidays = new HolidaysManager();
                 this.exportManager = new ExportManager(this.storage, this.notify);
-                
+
                 this.expenses = {
                     data: [],
                     filtered: [],
                     search: '',
                     category: 'all',
+                    person: 'all',
                     date: '',
-                    
+
                     load: () => {
                         this.expenses.data = this.storage.get();
                         this.expenses.applyFilters();
                     },
-                    
+
                     applyFilters: () => {
                         let res = [...this.expenses.data];
-                        
+
                         if (this.expenses.search) {
-                            res = res.filter(e => e.description.toLowerCase().includes(this.expenses.search.toLowerCase()) || (e.person && e.person.includes(this.expenses.search)));
+                            const q = this.expenses.search.toLowerCase();
+                            res = res.filter(e =>
+                                e.description.toLowerCase().includes(q) ||
+                                (e.person && e.person.includes(this.expenses.search))
+                            );
                         }
                         if (this.expenses.category !== 'all') {
                             res = res.filter(e => e.category === this.expenses.category);
                         }
-                        if (this.expenses.date) {
-                            res = res.filter(e => e.date.startsWith(this.expenses.date));
+                        if (this.expenses.person !== 'all') {
+                            res = res.filter(e => e.person === this.expenses.person);
                         }
-                        
-                        res.sort((a,b) => new Date(b.date) - new Date(a.date));
+                        if (this.expenses.date) {
+                            res = res.filter(e => (e.date || '').startsWith(this.expenses.date));
+                        }
+
+                        res.sort((a, b) => {
+                            const dateA = `${a.date} ${a.time || '00:00'}`;
+                            const dateB = `${b.date} ${b.time || '00:00'}`;
+                            return dateB.localeCompare(dateA);
+                        });
+
                         this.expenses.filtered = res;
                         this.renderList();
                         this.updateStats();
@@ -879,31 +2389,45 @@
 
                     handleSearch: (val) => { this.expenses.search = val; this.expenses.applyFilters(); },
                     handleFilterCategory: (val) => { this.expenses.category = val; this.expenses.applyFilters(); },
+                    handleFilterPerson: (val) => { this.expenses.person = val; this.expenses.applyFilters(); },
                     handleFilterDate: (val) => { this.expenses.date = val; this.expenses.applyFilters(); },
 
                     handleSubmit: (e) => {
                         e.preventDefault();
                         const id = document.getElementById('exp-id').value;
-                        const personSelect = document.getElementById('exp-person');
-                        let personVal = personSelect.value;
-                        if(personVal === 'other') personVal = ''; 
+                        const amount = parseFloat(document.getElementById('exp-amount').value);
+
+                        if (isNaN(amount) || amount <= 0) {
+                            this.notify.show('الرجاء إدخال مبلغ صحيح أكبر من صفر', 'error');
+                            return;
+                        }
 
                         const newExp = {
                             id: id || Date.now().toString(),
-                            amount: parseFloat(document.getElementById('exp-amount').value),
+                            amount: amount,
                             description: document.getElementById('exp-desc').value.trim(),
-                            person: personVal,
+                            person: document.getElementById('exp-person').value,
                             category: document.getElementById('exp-category').value,
-                            date: document.getElementById('exp-date').value
+                            date: document.getElementById('exp-date').value,
+                            time: document.getElementById('exp-time').value || '12:00'
                         };
+
+                        if (!newExp.description) {
+                            this.notify.show('الرجاء إدخال وصف المصروف', 'error');
+                            return;
+                        }
+                        if (!newExp.date) {
+                            this.notify.show('الرجاء اختيار التاريخ', 'error');
+                            return;
+                        }
 
                         if (id) {
                             const idx = this.expenses.data.findIndex(x => x.id === id);
                             if (idx > -1) this.expenses.data[idx] = newExp;
-                            this.notify.show('تم تحديث المصروف بنجاح');
+                            this.notify.show('تم تحديث المصروف بنجاح ✏️');
                         } else {
                             this.expenses.data.push(newExp);
-                            this.notify.show('تم إضافة المصروف بنجاح');
+                            this.notify.show('تم إضافة المصروف بنجاح ✅');
                         }
 
                         this.storage.save(this.expenses.data);
@@ -914,17 +2438,16 @@
                     delete: (id) => {
                         const confirmModal = document.getElementById('confirm-modal');
                         const btn = document.getElementById('confirm-delete-btn');
-                        
                         confirmModal.classList.add('open');
-                        
+
                         const newBtn = btn.cloneNode(true);
                         btn.parentNode.replaceChild(newBtn, btn);
-                        
+
                         newBtn.onclick = () => {
                             this.expenses.data = this.expenses.data.filter(e => e.id !== id);
                             this.storage.save(this.expenses.data);
                             confirmModal.classList.remove('open');
-                            this.notify.show('تم الحذف بنجاح');
+                            this.notify.show('تم الحذف بنجاح 🗑️');
                             this.expenses.applyFilters();
                         };
                     }
@@ -933,9 +2456,17 @@
                 this.router = {
                     navigate: (view) => {
                         this.ui.switchView(view);
+
                         if (view === 'dashboard') this.updateStats();
                         if (view === 'reports') this.renderCharts();
                         if (view === 'expenses') this.renderList();
+                        if (view === 'holidays') this.holidays.render();
+                        if (view === 'ages') {
+                            this.ageCalc.stop();
+                            this.ageCalc.start();
+                        } else {
+                            this.ageCalc.stop();
+                        }
                     }
                 };
 
@@ -945,19 +2476,33 @@
             init() {
                 this.expenses.load();
                 this.updateStats();
-                
+
+                // Keyboard shortcuts
                 document.addEventListener('keydown', (e) => {
                     if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
                         e.preventDefault();
                         this.ui.openModal();
                     }
+                    if (e.key === 'Escape') {
+                        this.ui.closeModal();
+                        document.getElementById('confirm-modal').classList.remove('open');
+                    }
+                });
+
+                // Close modals on overlay click
+                document.getElementById('expense-modal').addEventListener('click', (e) => {
+                    if (e.target === document.getElementById('expense-modal')) this.ui.closeModal();
+                });
+                document.getElementById('confirm-modal').addEventListener('click', (e) => {
+                    if (e.target === document.getElementById('confirm-modal'))
+                        document.getElementById('confirm-modal').classList.remove('open');
                 });
             }
 
             renderList() {
                 const tbody = document.querySelector('#expenses-table tbody');
                 const emptyState = document.getElementById('expenses-empty');
-                
+
                 if (this.expenses.filtered.length === 0) {
                     tbody.innerHTML = '';
                     emptyState.style.display = 'block';
@@ -967,15 +2512,18 @@
                 emptyState.style.display = 'none';
                 tbody.innerHTML = this.expenses.filtered.map(e => `
                     <tr>
-                        <td style="font-weight:600">${e.description}</td>
-                        <td style="color: var(--primary); font-weight:500">${e.person || '-'}</td>
+                        <td class="fw-bold">${e.description}</td>
+                        <td class="text-primary fw-bold">${e.person || '-'}</td>
                         <td>${this.ui.getCategoryBadge(e.category)}</td>
-                        <td style="direction: ltr; text-align: right; font-family: monospace; font-size: 0.95rem;">${e.date}</td>
-                        <td style="font-weight:800; color:var(--danger); direction: ltr; text-align: right; font-size: 1.05rem;">-${this.ui.formatCurrency(e.amount)}</td>
-                        <td style="text-align: center;">
-                            <div style="display:flex; gap:8px; justify-content:center;">
-                                <button class="btn btn-outline" style="padding:6px 10px; font-size:0.9rem" onclick="app.ui.openModal(app.expenses.data.find(x=>x.id==='${e.id}'))">✏️</button>
-                                <button class="btn btn-outline" style="padding:6px 10px; font-size:0.9rem; color:var(--danger); border-color:rgba(239,68,68,0.3)" onclick="app.expenses.delete('${e.id}')">🗑️</button>
+                        <td class="ltr" style="font-size:0.82rem;">${e.date}</td>
+                        <td class="ltr" style="font-size:0.82rem;">${e.time || '--:--'}</td>
+                        <td class="fw-bold text-danger ltr" style="font-size:0.95rem;">-${this.ui.formatCurrency(e.amount)}</td>
+                        <td style="text-align:center;">
+                            <div style="display:flex; gap:6px; justify-content:center;">
+                                <button class="btn btn-outline" style="padding:4px 8px; font-size:0.85rem;"
+                                    onclick="app.ui.openModal(app.expenses.data.find(x=>x.id==='${e.id}'))">✏️</button>
+                                <button class="btn btn-outline" style="padding:4px 8px; font-size:0.85rem; color:var(--danger); border-color:rgba(248,113,113,0.3);"
+                                    onclick="app.expenses.delete('${e.id}')">🗑️</button>
                             </div>
                         </td>
                     </tr>
@@ -984,20 +2532,30 @@
 
             updateStats() {
                 const data = this.expenses.data;
-                const total = data.reduce((sum, e) => sum + parseFloat(e.amount), 0);
+                const total = data.reduce((sum, e) => sum + (parseFloat(e.amount) || 0), 0);
                 const count = data.length;
                 const avg = count ? total / count : 0;
-                
+
                 const now = new Date();
-                const currentMonthStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
-                const monthTotal = data.filter(e => e.date.startsWith(currentMonthStr)).reduce((s,e) => s + parseFloat(e.amount), 0);
+                const currentMonthStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+                const monthTotal = data
+                    .filter(e => (e.date || '').startsWith(currentMonthStr))
+                    .reduce((s, e) => s + (parseFloat(e.amount) || 0), 0);
 
                 document.getElementById('dash-total').textContent = this.ui.formatCurrency(total);
                 document.getElementById('dash-month').textContent = this.ui.formatCurrency(monthTotal);
                 document.getElementById('dash-count').textContent = count.toLocaleString('en-US');
                 document.getElementById('dash-avg').textContent = this.ui.formatCurrency(avg);
 
-                const recent = [...data].sort((a,b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+                // Recent transactions (top 5)
+                const recent = [...data]
+                    .sort((a, b) => {
+                        const da = `${a.date} ${a.time || '00:00'}`;
+                        const db = `${b.date} ${b.time || '00:00'}`;
+                        return db.localeCompare(da);
+                    })
+                    .slice(0, 5);
+
                 const recentTbody = document.querySelector('#recent-transactions-table tbody');
                 const dashEmpty = document.getElementById('dash-empty');
 
@@ -1008,24 +2566,26 @@
                     dashEmpty.style.display = 'none';
                     recentTbody.innerHTML = recent.map(e => `
                         <tr>
-                            <td style="font-weight:600">${e.description}</td>
-                            <td style="color: var(--primary);">${e.person || '-'}</td>
-                            <td style="direction: ltr; text-align: right; font-family: monospace;">${e.date}</td>
-                            <td style="font-weight:800; direction: ltr; text-align: right;">-${this.ui.formatCurrency(e.amount)}</td>
+                            <td class="fw-bold">${e.description}</td>
+                            <td class="text-primary">${e.person || '-'}</td>
+                            <td class="ltr" style="font-size:0.82rem;">${e.date} ${e.time || ''}</td>
+                            <td class="fw-bold text-danger ltr">-${this.ui.formatCurrency(e.amount)}</td>
                         </tr>
                     `).join('');
                 }
             }
 
             renderCharts() {
-                this.chart.renderCategoryChart(this.expenses.data);
+                this.chart.renderDonutChart(this.expenses.data);
+                this.chart.renderCategoryBarChart(this.expenses.data);
                 this.chart.renderMonthlyChart(this.expenses.data);
             }
         }
 
-        // Start Application
+        /* ============================================================
+           START APPLICATION
+           ============================================================ */
         const app = new ExpenseApp();
-
     </script>
 </body>
 </html>
